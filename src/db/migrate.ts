@@ -164,3 +164,4 @@ async function applyMigrations(): Promise<void> {
 
   console.log("✅ Database migrations complete");
 }
+export const runMigrations = applyMigrations;
