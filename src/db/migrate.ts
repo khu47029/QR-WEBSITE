@@ -17,7 +17,7 @@ async function applyMigrations(): Promise<void> {
   `);
 
   // QR codes table
-  await db.run(sql`
+  await db.execute(sql`
     CREATE TABLE IF NOT EXISTS qr_codes (
       id TEXT PRIMARY KEY,
       owner_id TEXT NOT NULL REFERENCES users(id),
@@ -36,7 +36,7 @@ async function applyMigrations(): Promise<void> {
   await db.run(sql`CREATE INDEX IF NOT EXISTS idx_qr_owner ON qr_codes(owner_id)`);
 
   // Content versions table
-  await db.run(sql`
+  await db.execute(sql`
     CREATE TABLE IF NOT EXISTS content_versions (
       id TEXT PRIMARY KEY,
       qr_code_id TEXT NOT NULL REFERENCES qr_codes(id),
@@ -48,7 +48,7 @@ async function applyMigrations(): Promise<void> {
   await db.run(sql`CREATE INDEX IF NOT EXISTS idx_cv_qr ON content_versions(qr_code_id)`);
 
   // Files table
-  await db.run(sql`
+  await db.execute(sql`
     CREATE TABLE IF NOT EXISTS files (
       id TEXT PRIMARY KEY,
       content_version_id TEXT NOT NULL REFERENCES content_versions(id),
@@ -64,7 +64,7 @@ async function applyMigrations(): Promise<void> {
   await db.run(sql`CREATE INDEX IF NOT EXISTS idx_files_cv ON files(content_version_id)`);
 
   // Text content table
-  await db.run(sql`
+  await db.execute(sql`
     CREATE TABLE IF NOT EXISTS text_content (
       id TEXT PRIMARY KEY,
       content_version_id TEXT NOT NULL REFERENCES content_versions(id),
@@ -74,7 +74,7 @@ async function applyMigrations(): Promise<void> {
   `);
 
   // URL content table
-  await db.run(sql`
+  await db.execute(sql`
     CREATE TABLE IF NOT EXISTS url_content (
       id TEXT PRIMARY KEY,
       content_version_id TEXT NOT NULL REFERENCES content_versions(id),
@@ -84,7 +84,7 @@ async function applyMigrations(): Promise<void> {
   `);
 
   // Access rules table
-  await db.run(sql`
+  await db.execute(sql`
     CREATE TABLE IF NOT EXISTS access_rules (
       id TEXT PRIMARY KEY,
       qr_code_id TEXT NOT NULL UNIQUE REFERENCES qr_codes(id),
@@ -98,7 +98,7 @@ async function applyMigrations(): Promise<void> {
   `);
 
   // QR scans table
-  await db.run(sql`
+  await db.execute(sql`
     CREATE TABLE IF NOT EXISTS qr_scans (
       id TEXT PRIMARY KEY,
       qr_code_id TEXT NOT NULL REFERENCES qr_codes(id),
@@ -112,7 +112,7 @@ async function applyMigrations(): Promise<void> {
   await db.run(sql`CREATE INDEX IF NOT EXISTS idx_scans_qr_time ON qr_scans(qr_code_id, scanned_at)`);
 
   // Password attempts table
-  await db.run(sql`
+  await db.execute(sql`
     CREATE TABLE IF NOT EXISTS password_attempts (
       id TEXT PRIMARY KEY,
       qr_code_id TEXT NOT NULL REFERENCES qr_codes(id),
@@ -123,7 +123,7 @@ async function applyMigrations(): Promise<void> {
   `);
 
   // Subscriptions table
-  await db.run(sql`
+  await db.execute(sql`
     CREATE TABLE IF NOT EXISTS subscriptions (
       id TEXT PRIMARY KEY,
       user_id TEXT NOT NULL REFERENCES users(id),
@@ -136,7 +136,7 @@ async function applyMigrations(): Promise<void> {
   `);
 
   // Abuse reports table
-  await db.run(sql`
+  await db.execute(sql`
     CREATE TABLE IF NOT EXISTS abuse_reports (
       id TEXT PRIMARY KEY,
       qr_code_id TEXT NOT NULL REFERENCES qr_codes(id),
@@ -147,10 +147,10 @@ async function applyMigrations(): Promise<void> {
       created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
     )
   `);
-  await db.run(sql`CREATE INDEX IF NOT EXISTS idx_abuse_qr ON abuse_reports(qr_code_id)`);
+  await db.execute(sql`CREATE INDEX IF NOT EXISTS idx_abuse_qr ON abuse_reports(qr_code_id)`);
 
   // Audit log table
-  await db.run(sql`
+  await db.execute(sql`
     CREATE TABLE IF NOT EXISTS audit_log (
       id TEXT PRIMARY KEY,
       actor_user_id TEXT,
