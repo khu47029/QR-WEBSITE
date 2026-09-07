@@ -1,25 +1,25 @@
-import { sqliteTable, text, integer, blob } from "drizzle-orm/sqlite-core";
+import { pgTable, text, varchar, integer, boolean, timestamp, bytea } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 
 // ─── users ───────────────────────────────────────────────────────────────────
-export const users = sqliteTable("users", {
+export const users = pgTable("users", {
   id: text("id").primaryKey(),
   email: text("email").notNull().unique(),
   passwordHash: text("password_hash"),
   name: text("name").notNull().default(""),
   plan: text("plan", { enum: ["free", "pro", "business"] }).notNull().default("free"),
   emailVerifiedAt: text("email_verified_at"),
-  createdAt: text("created_at").notNull().default(sql`(datetime('now'))`),
-  updatedAt: text("updated_at").notNull().default(sql`(datetime('now'))`),
+  createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { mode: "string" }).notNull().defaultNow(),
 });
 
 // ─── qr_codes ────────────────────────────────────────────────────────────────
-export const qrCodes = sqliteTable("qr_codes", {
+export const qrCodes = pgTable("qr_codes", {
   id: text("id").primaryKey(),
   ownerId: text("owner_id")
     .notNull()
     .references(() => users.id),
-  // 128+ bits of cryptographic randomness, never sequential, never predictable
+  // 128+ bits of cryptographic randomness, never sequential, never predictabl
   publicToken: text("public_token").notNull().unique(),
   name: text("name").notNull().default(""),
   contentType: text("content_type", {
@@ -30,29 +30,29 @@ export const qrCodes = sqliteTable("qr_codes", {
   })
     .notNull()
     .default("active"),
-  // Points to the current content_versions row — this is what makes dynamic replacement work (§21)
+  // Points to the current content_versions row — this is what makes dynamic replace
   currentContentVersionId: text("current_content_version_id"),
   expiresAt: text("expires_at"),
-  createdAt: text("created_at").notNull().default(sql`(datetime('now'))`),
-  updatedAt: text("updated_at").notNull().default(sql`(datetime('now'))`),
+  createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { mode: "string" }).notNull().defaultNow(),
 });
 
 // ─── content_versions ────────────────────────────────────────────────────────
 // The join table between qr_codes and their content.
 // Inserting a new row + updating qr_codes.current_content_version_id IS the
 // entire content-replacement mechanism (Blueprint §21).
-export const contentVersions = sqliteTable("content_versions", {
+export const contentVersions = pgTable("content_versions", {
   id: text("id").primaryKey(),
   qrCodeId: text("qr_code_id")
     .notNull()
     .references(() => qrCodes.id),
   versionNumber: integer("version_number").notNull().default(1),
-  isCurrent: integer("is_current", { mode: "boolean" }).notNull().default(true),
-  createdAt: text("created_at").notNull().default(sql`(datetime('now'))`),
+  isCurrent: boolean("is_current").notNull().default(true),
+  createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
 });
 
 // ─── files ───────────────────────────────────────────────────────────────────
-export const files = sqliteTable("files", {
+export const files = pgTable("files", {
   id: text("id").primaryKey(),
   contentVersionId: text("content_version_id")
     .notNull()
@@ -65,32 +65,32 @@ export const files = sqliteTable("files", {
   sizeBytes: integer("size_bytes").notNull(),
   checksum: text("checksum").notNull(),
   zipManifestJson: text("zip_manifest_json"), // JSON manifest for ZIP central directory
-  createdAt: text("created_at").notNull().default(sql`(datetime('now'))`),
+  createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
 });
 
 // ─── text_content ─────────────────────────────────────────────────────────────
-export const textContent = sqliteTable("text_content", {
+export const textContent = pgTable("text_content", {
   id: text("id").primaryKey(),
   contentVersionId: text("content_version_id")
     .notNull()
     .references(() => contentVersions.id),
   body: text("body").notNull(),
-  createdAt: text("created_at").notNull().default(sql`(datetime('now'))`),
+  createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
 });
 
 // ─── url_content ──────────────────────────────────────────────────────────────
-export const urlContent = sqliteTable("url_content", {
+export const urlContent = pgTable("url_content", {
   id: text("id").primaryKey(),
   contentVersionId: text("content_version_id")
     .notNull()
     .references(() => contentVersions.id),
   targetUrl: text("target_url").notNull(),
-  createdAt: text("created_at").notNull().default(sql`(datetime('now'))`),
+  createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
 });
 
 // ─── access_rules ─────────────────────────────────────────────────────────────
 // Argon2id / scrypt hash for viewer passwords. Never store plaintext (Blueprint §23).
-export const accessRules = sqliteTable("access_rules", {
+export const accessRules = pgTable("access_rules", {
   id: text("id").primaryKey(),
   qrCodeId: text("qr_code_id")
     .notNull()
@@ -100,21 +100,21 @@ export const accessRules = sqliteTable("access_rules", {
     .notNull()
     .default("public"),
   passwordHash: text("password_hash"), // scrypt hash only — never plaintext
-  allowDownload: integer("allow_download", { mode: "boolean" }).notNull().default(true),
-  viewOnly: integer("view_only", { mode: "boolean" }).notNull().default(false),
-  createdAt: text("created_at").notNull().default(sql`(datetime('now'))`),
-  updatedAt: text("updated_at").notNull().default(sql`(datetime('now'))`),
+  allowDownload: boolean("allow_download").notNull().default(true),
+  viewOnly: boolean("view_only").notNull().default(false),
+  createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { mode: "string" }).notNull().defaultNow(),
 });
 
 // ─── qr_scans ────────────────────────────────────────────────────────────────
 // Privacy-by-design: Raw IP is NEVER stored. Country derived and IP discarded.
 // Session hash is salted + rotated daily, not reversible to an identity (Blueprint §16, §26).
-export const qrScans = sqliteTable("qr_scans", {
+export const qrScans = pgTable("qr_scans", {
   id: text("id").primaryKey(),
   qrCodeId: text("qr_code_id")
     .notNull()
     .references(() => qrCodes.id),
-  scannedAt: text("scanned_at").notNull().default(sql`(datetime('now'))`),
+  scannedAt: timestamp("scanned_at", { mode: "string" }).notNull().defaultNow(),
   country: text("country"),
   deviceType: text("device_type", { enum: ["mobile", "tablet", "desktop", "unknown"] }),
   browserFamily: text("browser_family"),
@@ -123,18 +123,18 @@ export const qrScans = sqliteTable("qr_scans", {
 });
 
 // ─── password_attempts ────────────────────────────────────────────────────────
-export const passwordAttempts = sqliteTable("password_attempts", {
+export const passwordAttempts = pgTable("password_attempts", {
   id: text("id").primaryKey(),
   qrCodeId: text("qr_code_id")
     .notNull()
     .references(() => qrCodes.id),
   ipHash: text("ip_hash").notNull(), // Privacy-safe hash of IP, not raw IP
-  attemptedAt: text("attempted_at").notNull().default(sql`(datetime('now'))`),
-  success: integer("success", { mode: "boolean" }).notNull().default(false),
+  attemptedAt: timestamp("attempted_at", { mode: "string" }).notNull().defaultNow(),
+  success: boolean("success").notNull().default(false),
 });
 
 // ─── subscriptions ───────────────────────────────────────────────────────────
-export const subscriptions = sqliteTable("subscriptions", {
+export const subscriptions = pgTable("subscriptions", {
   id: text("id").primaryKey(),
   userId: text("user_id")
     .notNull()
@@ -143,12 +143,12 @@ export const subscriptions = sqliteTable("subscriptions", {
   providerCustomerId: text("provider_customer_id"),
   status: text("status").notNull().default("active"),
   currentPeriodEnd: text("current_period_end"),
-  createdAt: text("created_at").notNull().default(sql`(datetime('now'))`),
+  createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
 });
 
 // ─── abuse_reports ───────────────────────────────────────────────────────────
 // Public viewers can flag content. Reporter IP is hashed, never stored raw (§16).
-export const abuseReports = sqliteTable("abuse_reports", {
+export const abuseReports = pgTable("abuse_reports", {
   id: text("id").primaryKey(),
   qrCodeId: text("qr_code_id")
     .notNull()
@@ -161,18 +161,18 @@ export const abuseReports = sqliteTable("abuse_reports", {
   status: text("status", { enum: ["open", "reviewed", "actioned", "dismissed"] })
     .notNull()
     .default("open"),
-  createdAt: text("created_at").notNull().default(sql`(datetime('now'))`),
+  createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
 });
 
 // ─── audit_log ───────────────────────────────────────────────────────────────
-export const auditLog = sqliteTable("audit_log", {
+export const auditLog = pgTable("audit_log", {
   id: text("id").primaryKey(),
   actorUserId: text("actor_user_id"),
   action: text("action").notNull(),
   targetType: text("target_type"),
   targetId: text("target_id"),
   metadata: text("metadata"), // JSON string
-  createdAt: text("created_at").notNull().default(sql`(datetime('now'))`),
+  createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
 });
 
 // ─── Type exports ─────────────────────────────────────────────────────────────

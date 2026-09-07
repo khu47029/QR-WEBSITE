@@ -1,13 +1,10 @@
 import { defineConfig } from "drizzle-kit";
-import path from "path";
-
-const dbPath = process.env.DATABASE_URL || `file:${path.join(process.cwd(), "qr_platform.db")}`;
 
 export default defineConfig({
+  dialect: "postgresql",
   schema: "./src/db/schema.ts",
-  out: "./drizzle",
-  dialect: "sqlite",
+  out: "./src/db/migrations",
   dbCredentials: {
-    url: dbPath,
+    url: process.env.DATABASE_URL || "postgresql://postgres:postgres@localhost:5432/postgres",
   },
 });
