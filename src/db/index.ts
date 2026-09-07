@@ -1,11 +1,10 @@
 import { Pool } from "pg";
-import { drizzle } from "drizzle-orm/pg-core";
+import { drizzle } from "drizzle-orm/node-postgres";
 import * as schema from "./schema";
 
 // Create a PostgreSQL connection pool using Supabase connection string.
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  // Supabase requires SSL; rejectUnauthorized false for self‑signed certs.
   ssl: { rejectUnauthorized: false },
 });
 
