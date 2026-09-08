@@ -98,7 +98,7 @@ export async function putObject(
       ...getHeaders(mimeType),
       "x-upsert": "true",
     },
-    body: buffer,
+    body: buffer as unknown as BodyInit,
   });
 
   if (!response.ok) {
