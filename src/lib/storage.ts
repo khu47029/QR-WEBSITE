@@ -1,5 +1,3 @@
-import fs from "fs/promises";
-import path from "path";
 import crypto from "crypto";
 import { sanitizeFilename } from "./utils";
 
@@ -17,76 +15,48 @@ export interface PresignedUploadUrlResponse {
   headers?: Record<string, string>;
 }
 
-// Local storage base directory for dev
-const LOCAL_STORAGE_DIR = path.join(process.cwd(), ".local_storage");
+function getSupabaseConfig() {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const bucket = process.env.SUPABASE_STORAGE_BUCKET;
 
-/**
- * Guards against deploying into a half-implemented object-storage backend.
- *
- * Only the local filesystem driver is implemented: putObject/getObject/deleteObject
- * all read and write under LOCAL_STORAGE_DIR. The R2 branch that used to live in
- * getPresignedUploadUrl() returned a bare bucket URL with no SigV4 signature, and
- * nothing ever read bytes back out of R2 — so setting the R2 variables produced a
- * deployment where uploads were rejected by the bucket and every download served
- * nothing, silently. Failing here is the honest behaviour until a signed R2 driver
- * exists.
- */
-function assertStorageConfigured(): void {
-  const r2Vars = [
-    "R2_ACCOUNT_ID",
-    "R2_ACCESS_KEY_ID",
-    "R2_SECRET_ACCESS_KEY",
-    "R2_BUCKET_NAME",
-  ].filter((name) => process.env[name]);
-
-  if (r2Vars.length > 0) {
+  if (!url || !key || !bucket) {
     throw new Error(
-      `Object storage is configured (${r2Vars.join(", ")}) but the R2 driver is not ` +
-        `implemented — uploads would not be signed and downloads would return nothing. ` +
-        `Unset these variables to use the local filesystem driver, or implement a signed ` +
-        `R2 driver in src/lib/storage.ts before deploying.`
+      "Supabase Storage is not configured. Set SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY and SUPABASE_STORAGE_BUCKET."
     );
   }
+
+  return { url, key, bucket };
 }
 
-/**
- * Resolves a storage key to an absolute path, refusing anything that escapes
- * the storage root.
- *
- * Callers pass keys that originate from request bodies, so `path.join` alone is
- * not safe: a key like "<uuid>/../../../../etc/passwd" would resolve outside the
- * bucket and turn getObject() into arbitrary file read. Containment is checked
- * after normalization, which is the only point where traversal is detectable.
- */
-function resolveStoragePath(storageKey: string): string {
-  if (!storageKey || storageKey.includes("\0")) {
-    throw new Error("Invalid storage key");
-  }
+function getObjectUrl(storageKey: string): string {
+  const { url, bucket } = getSupabaseConfig();
 
-  const root = path.resolve(LOCAL_STORAGE_DIR);
-  const resolved = path.resolve(root, storageKey);
+  const encodedBucket = encodeURIComponent(bucket);
+  const encodedKey = storageKey
+    .split("/")
+    .map((part) => encodeURIComponent(part))
+    .join("/");
 
-  if (resolved !== root && !resolved.startsWith(root + path.sep)) {
-    throw new Error("Invalid storage key: path escapes storage root");
-  }
-
-  return resolved;
+  return `${url}/storage/v1/object/${encodedBucket}/${encodedKey}`;
 }
 
-/**
- * Validates that a storage key has the exact shape buildStorageKey() produces.
- * Used at trust boundaries where the key arrives from a client.
- */
+function getHeaders(contentType?: string): Record<string, string> {
+  const { key } = getSupabaseConfig();
+
+  return {
+    Authorization: `Bearer ${key}`,
+    apikey: key,
+    ...(contentType ? { "Content-Type": contentType } : {}),
+  };
+}
+
 export function isValidStorageKey(storageKey: string): boolean {
   return /^[0-9a-f-]{36}\/[0-9a-f-]{36}\/[0-9a-f-]{36}\/[0-9a-f]{8}-[a-zA-Z0-9._-]{1,100}$/.test(
     storageKey
   );
 }
 
-/**
- * Builds the canonical storage key according to Blueprint §11:
- * {ownerId}/{qrCodeId}/{versionId}/{shortHash}-{sanitizedFilename}
- */
 export function buildStorageKey(
   ownerId: string,
   qrCodeId: string,
@@ -95,43 +65,53 @@ export function buildStorageKey(
 ): string {
   const shortHash = crypto.randomBytes(4).toString("hex");
   const cleanName = sanitizeFilename(originalFilename);
+
   return `${ownerId}/${qrCodeId}/${versionId}/${shortHash}-${cleanName}`;
 }
 
-/**
- * Generates a presigned upload URL or local upload route for client direct-PUT.
- */
 export async function getPresignedUploadUrl(
   storageKey: string,
   declaredMime: string,
   maxSizeBytes: number,
   expiresInSeconds = 300
 ): Promise<PresignedUploadUrlResponse> {
-  assertStorageConfigured();
+  getSupabaseConfig();
 
-  // Local filesystem driver: the client PUTs to our own route, which enforces the
-  // same key validation as /api/uploads/complete.
-  const uploadUrl = `/api/uploads/direct?key=${encodeURIComponent(storageKey)}`;
   return {
-    uploadUrl,
+    uploadUrl: `/api/uploads/direct?key=${encodeURIComponent(storageKey)}`,
     storageKey,
     expiresInSeconds,
+    headers: {
+      "Content-Type": declaredMime,
+    },
   };
 }
 
-/**
- * Stores file buffer securely in the storage backend.
- */
 export async function putObject(
   storageKey: string,
   buffer: Buffer,
   mimeType: string
 ): Promise<StorageObjectMetadata> {
-  const fullPath = resolveStoragePath(storageKey);
-  await fs.mkdir(path.dirname(fullPath), { recursive: true });
-  await fs.writeFile(fullPath, buffer);
+  const response = await fetch(getObjectUrl(storageKey), {
+    method: "POST",
+    headers: {
+      ...getHeaders(mimeType),
+      "x-upsert": "true",
+    },
+    body: buffer,
+  });
 
-  const checksum = crypto.createHash("sha256").update(buffer).digest("hex");
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(
+      `Supabase Storage upload failed (${response.status}): ${errorText}`
+    );
+  }
+
+  const checksum = crypto
+    .createHash("sha256")
+    .update(buffer)
+    .digest("hex");
 
   return {
     storageKey,
@@ -141,35 +121,43 @@ export async function putObject(
   };
 }
 
-/**
- * Retrieves file buffer securely from the storage backend.
- */
-export async function getObject(storageKey: string): Promise<Buffer | null> {
-  let fullPath: string;
-  try {
-    fullPath = resolveStoragePath(storageKey);
-  } catch {
-    // A malformed or traversing key is treated as "no such object" rather than
-    // surfacing why it was rejected.
+export async function getObject(
+  storageKey: string
+): Promise<Buffer | null> {
+  const response = await fetch(getObjectUrl(storageKey), {
+    method: "GET",
+    headers: getHeaders(),
+  });
+
+  if (response.status === 404) {
     return null;
   }
 
-  try {
-    return await fs.readFile(fullPath);
-  } catch (err: any) {
-    if (err.code === "ENOENT") return null;
-    throw err;
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(
+      `Supabase Storage download failed (${response.status}): ${errorText}`
+    );
   }
+
+  return Buffer.from(await response.arrayBuffer());
 }
 
-/**
- * Deletes an object from storage.
- */
-export async function deleteObject(storageKey: string): Promise<boolean> {
-  try {
-    await fs.unlink(resolveStoragePath(storageKey));
-    return true;
-  } catch {
+export async function deleteObject(
+  storageKey: string
+): Promise<boolean> {
+  const response = await fetch(getObjectUrl(storageKey), {
+    method: "DELETE",
+    headers: getHeaders(),
+  });
+
+  if (response.status === 404) {
     return false;
   }
-}
+
+  if (!response.ok) {
+    return false;
+  }
+
+  return true;
+    }
