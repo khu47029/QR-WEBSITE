@@ -1,22 +1,29 @@
-
 "use client";
 
-import { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface PerspectiveGridProps {
   className?: string;
   gridSize?: number;
+  showOverlay?: boolean;
   fadeRadius?: number;
 }
 
-export default function PerspectiveGrid({
+export function PerspectiveGrid({
   className,
-  gridSize = 30,
-  fadeRadius = 72,
+  gridSize = 40,
+  showOverlay = true,
+  fadeRadius = 80,
 }: PerspectiveGridProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const tiles = useMemo(
-    () => Array.from({ length: gridSize * gridSize }, (_, index) => index),
+    () => Array.from({ length: gridSize * gridSize }),
     [gridSize]
   );
 
@@ -24,37 +31,52 @@ export default function PerspectiveGrid({
     <div
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 overflow-hidden",
+        "pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden bg-slate-950",
         className
       )}
-      style={{ perspective: "1600px" }}
+      style={{
+        perspective: "2000px",
+        transformStyle: "preserve-3d",
+      }}
     >
       <div
-        className="absolute left-1/2 top-1/2 grid aspect-square w-[75rem] origin-center opacity-70"
+        className="absolute left-1/2 top-1/2 grid aspect-square w-[80rem] origin-center animate-pulse"
         style={{
           gridTemplateColumns: `repeat(${gridSize}, minmax(0, 1fr))`,
+          gridTemplateRows: `repeat(${gridSize}, minmax(0, 1fr))`,
           transform:
-            "translate(-50%, -42%) rotateX(58deg) rotateZ(-12deg) scale(1.35)",
+            "translate(-50%, -50%) rotateX(62deg) rotateZ(-12deg) scale(1.8)",
           transformStyle: "preserve-3d",
+          animationDuration: "8s",
         }}
       >
-        {tiles.map((tile) => (
-          <span
-            key={tile}
-            className="aspect-square border border-cyan-400/[0.08] bg-cyan-400/[0.015]"
-          />
-        ))}
+        {mounted &&
+          tiles.map((_, index) => (
+            <div
+              key={index}
+              className="min-h-[1px] min-w-[1px] border border-cyan-400/20 bg-cyan-400/[0.025]"
+            />
+          ))}
       </div>
 
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            `radial-gradient(circle at center, transparent 0%, transparent 28%, #020617 ${fadeRadius}%, #020617 100%)`,
-        }}
-      />
+      {showOverlay && (
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background: `radial-gradient(
+              circle at center,
+              transparent 0%,
+              transparent 25%,
+              #020617 ${fadeRadius}%,
+              #020617 100%
+            )`,
+          }}
+        />
+      )}
 
-      <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/[0.04] via-transparent to-slate-950/90" />
+      <div className="absolute inset-0 z-20 bg-gradient-to-b from-cyan-500/[0.08] via-transparent to-slate-950" />
     </div>
   );
 }
+
+export default PerspectiveGrid;
