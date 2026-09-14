@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { HeroSynthesisEngine } from "@/components/home/hero-synthesis-engine";
-import PerspectiveGrid from "@/components/ui/perspective-grid";
+
 import {
   Layers,
   RefreshCw,
