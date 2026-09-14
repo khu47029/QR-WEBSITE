@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HeroSynthesisEngine } from "@/components/home/hero-synthesis-engine";
+import PerspectiveGrid from "@/components/ui/perspective-grid";
 import {
   Layers,
   RefreshCw,
@@ -176,7 +177,10 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero Header Section */}
-      <section className="relative pt-20 pb-16 px-6">
+      <section className="relative isolate overflow-hidden pt-20 pb-16 px-6">
+        <PerspectiveGrid />
+
+        
         <div className="mx-auto max-w-4xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-mono font-medium text-cyan-300 mb-6">
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
