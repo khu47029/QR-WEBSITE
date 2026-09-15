@@ -178,7 +178,6 @@ export default function LandingPage() {
 
       {/* Hero Header Section */}
       <section className="relative isolate overflow-hidden pt-20 pb-16 px-6">
-        <PerspectiveGrid />
 
         
         <div className="mx-auto max-w-4xl text-center">
