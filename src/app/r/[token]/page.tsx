@@ -13,6 +13,7 @@ import { BundleViewer } from "@/components/viewer/bundle-viewer";
 import { AbuseReportButton } from "@/components/viewer/abuse-report-button";
 import { ShieldCheck, Clock, Trash2, PowerOff, Sparkles, AlertCircle, Eye } from "lucide-react";
 import { constructNoIndexMetadata } from "@/lib/seo/metadata";
+import { QrazenIconMark } from "@/components/brand/qrazen-logo";
 
 export const dynamic = "force-dynamic";
 
@@ -163,9 +164,7 @@ function ViewerShell({
       {/* Subtle top brand pill */}
       <header className="px-6 py-4 flex items-center justify-between border-b border-slate-900">
         <div className="flex items-center gap-2">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 text-slate-950 font-black text-xs shadow-md shadow-cyan-500/20">
-            QR
-          </div>
+          <QrazenIconMark size="sm" animate={false} />
           <span className="text-xs font-mono font-bold text-slate-300">
             SECURE ACCESS GATEWAY
           </span>

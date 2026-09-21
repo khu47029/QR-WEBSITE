@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/seo/site";
+import { QrazenLogo } from "@/components/brand/qrazen-logo";
 
 interface PublicHeaderProps {
   currentPath?: string;
@@ -11,18 +12,8 @@ export function PublicHeader({ currentPath }: PublicHeaderProps) {
     <nav className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md px-6 py-4">
       <div className="mx-auto flex max-w-6xl items-center justify-between">
         {/* Brand Logo & Slogan */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-slate-950 font-black text-sm shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
-            QR
-          </div>
-          <div className="flex flex-col">
-            <span className="font-bold text-white tracking-tight text-base leading-none">
-              {SITE_CONFIG.name}
-            </span>
-            <span className="text-[10px] font-mono text-cyan-400 tracking-wider">
-              ACCESS GATEWAY
-            </span>
-          </div>
+        <Link href="/" className="inline-flex">
+          <QrazenLogo size="md" />
         </Link>
 
         {/* Desktop Nav Links */}

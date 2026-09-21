@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Mail, Lock, ArrowRight, Sparkles, AlertCircle } from "lucide-react";
+import { QrazenLogo } from "@/components/brand/qrazen-logo";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -49,18 +50,8 @@ export default function LoginPage() {
 
       <div className="w-full max-w-md relative z-10">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2.5 group">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-slate-950 font-black text-sm shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
-              QR
-            </div>
-            <div className="flex flex-col text-left">
-              <span className="font-bold text-white tracking-tight text-base leading-none">
-                QR Content
-              </span>
-              <span className="text-[10px] font-mono text-cyan-400 tracking-wider">
-                ACCESS GATEWAY
-              </span>
-            </div>
+          <Link href="/" className="inline-flex justify-center">
+            <QrazenLogo size="lg" />
           </Link>
           <h1 className="mt-6 text-2xl font-bold text-white tracking-tight">
             Sign In to Workstation

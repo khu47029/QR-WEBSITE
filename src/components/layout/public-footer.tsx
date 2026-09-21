@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/seo/site";
+import { QrazenIconMark } from "@/components/brand/qrazen-logo";
 
 export function PublicFooter() {
   return (
@@ -8,14 +9,12 @@ export function PublicFooter() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand Col */}
           <div className="space-y-3 md:col-span-2">
-            <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-cyan-500 text-slate-950 font-bold text-xs">
-                QR
-              </div>
-              <span className="font-bold text-slate-200 text-sm tracking-tight">
+            <Link href="/" className="inline-flex items-center gap-2 group">
+              <QrazenIconMark size="sm" />
+              <span className="font-bold text-slate-200 text-sm tracking-tight group-hover:text-cyan-300 transition-colors">
                 {SITE_CONFIG.name}
               </span>
-            </div>
+            </Link>
             <p className="text-slate-400 text-xs leading-relaxed max-w-sm">
               {SITE_CONFIG.description}
             </p>

@@ -5,6 +5,7 @@ import { runMigrations } from "@/db/migrate";
 import { LogoutButton } from "@/components/dashboard/logout-button";
 import { QrCode, Plus, User, Sparkles } from "lucide-react";
 import { constructNoIndexMetadata } from "@/lib/seo/metadata";
+import { QrazenLogo } from "@/components/brand/qrazen-logo";
 
 export const metadata = constructNoIndexMetadata("Workstation");
 
@@ -24,18 +25,8 @@ export default async function DashboardLayout({
       <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
           <div className="flex items-center gap-6">
-            <Link href="/dashboard" className="flex items-center gap-2.5 group">
-              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-slate-950 font-black text-xs shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform">
-                QR
-              </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-white text-sm tracking-tight leading-none">
-                  QR Gateway
-                </span>
-                <span className="text-[9px] font-mono text-cyan-400">
-                  WORKSTATION
-                </span>
-              </div>
+            <Link href="/dashboard" className="inline-flex items-center">
+              <QrazenLogo size="sm" subtitle="WORKSTATION" />
             </Link>
 
             <nav className="hidden md:flex items-center gap-1 text-xs font-mono">
