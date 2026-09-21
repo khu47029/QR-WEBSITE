@@ -208,24 +208,6 @@ export default function DynamicQrPage() {
               ))}
             </div>
           </section>
-
-          {/* CTA Banner */}
-          <section className="my-16 rounded-3xl border border-cyan-500/30 bg-gradient-to-r from-slate-900 via-cyan-950/40 to-slate-900 p-8 sm:p-12 text-center space-y-4">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-              Upgrade to Dynamic Access Today
-            </h2>
-            <p className="text-slate-300 text-xs sm:text-sm max-w-lg mx-auto">
-              Start with 2 free active dynamic codes. Test instant content rotation in your own browser in 30 seconds.
-            </p>
-            <div className="pt-2">
-              <Link
-                href="/signup"
-                className="rounded-xl bg-cyan-500 px-8 py-3.5 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-xl shadow-cyan-500/25 transition-all inline-flex items-center gap-2"
-              >
-                Mint Free Dynamic QR <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </section>
         </div>
       </main>
 

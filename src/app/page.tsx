@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { HeroSynthesisEngine } from "@/components/home/hero-synthesis-engine";
+import { HeroProductShowcase } from "@/components/home/hero-product-showcase";
 import { constructMetadata } from "@/lib/seo/metadata";
 import { buildPlatformGraph, buildFaqSchema } from "@/lib/seo/schema";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -17,7 +17,6 @@ import {
   Link2,
   FolderArchive,
   CheckCircle2,
-  Check,
   ArrowRight,
   Shield,
   Zap,
@@ -91,9 +90,9 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Signature Interactive 4-Stage Synthesis Engine */}
+          {/* Signature Animated Flagship Product Showcase */}
           <div className="mt-14">
-            <HeroSynthesisEngine />
+            <HeroProductShowcase />
           </div>
         </section>
 
@@ -278,110 +277,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Pricing Section */}
-        <section id="pricing" className="border-t border-slate-900 bg-slate-900/30 py-24 px-6">
-          <div className="mx-auto max-w-5xl">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <h2 className="text-xs font-mono font-semibold uppercase tracking-widest text-cyan-400 mb-2">
-                TRANSPARENT TIERS
-              </h2>
-              <h3 className="text-3xl font-bold text-white tracking-tight">
-                Simple, Predictable Plans
-              </h3>
-              <p className="mt-2 text-slate-400 text-sm">
-                Start free forever, upgrade as your team and asset requirements scale.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-              {/* Free Tier */}
-              <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-8 space-y-6">
-                <div>
-                  <span className="text-xs font-mono text-slate-400 uppercase">FREE FOREVER</span>
-                  <div className="mt-2 flex items-baseline gap-1">
-                    <span className="text-4xl font-extrabold text-white font-mono">$0</span>
-                    <span className="text-xs text-slate-500 font-mono">/ month</span>
-                  </div>
-                  <p className="mt-2 text-xs text-slate-400">
-                    Ideal for personal projects, simple menus, and one-off asset sharing.
-                  </p>
-                </div>
-
-                <ul className="space-y-3 text-xs text-slate-300 font-mono">
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-cyan-400 flex-shrink-0" />
-                    <span>2 Active Dynamic QR Gateways</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-cyan-400 flex-shrink-0" />
-                    <span>100 MB Cloud Asset Storage</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-cyan-400 flex-shrink-0" />
-                    <span>Instant Content Replacement</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-cyan-400 flex-shrink-0" />
-                    <span>Privacy-First Scan Analytics</span>
-                  </li>
-                </ul>
-
-                <Link
-                  href="/signup"
-                  className="block w-full rounded-xl border border-slate-700 bg-slate-800 py-3 text-center text-xs font-bold text-white hover:bg-slate-700 transition-colors"
-                >
-                  Get Started Free
-                </Link>
-              </div>
-
-              {/* Pro Tier */}
-              <div className="rounded-3xl border border-cyan-500/40 bg-cyan-950/20 p-8 space-y-6 relative shadow-2xl shadow-cyan-950/40">
-                <div className="absolute top-4 right-4">
-                  <span className="rounded-full border border-cyan-500/40 bg-cyan-500/20 px-3 py-1 text-[10px] font-mono text-cyan-300 font-bold uppercase">
-                    POPULAR
-                  </span>
-                </div>
-                <div>
-                  <span className="text-xs font-mono text-cyan-400 uppercase">PRO GATEWAY</span>
-                  <div className="mt-2 flex items-baseline gap-1">
-                    <span className="text-4xl font-extrabold text-white font-mono">$19</span>
-                    <span className="text-xs text-slate-500 font-mono">/ month</span>
-                  </div>
-                  <p className="mt-2 text-xs text-slate-400">
-                    For businesses, agencies, and teams requiring high volume and password protection.
-                  </p>
-                </div>
-
-                <ul className="space-y-3 text-xs text-slate-300 font-mono">
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-cyan-400 flex-shrink-0" />
-                    <span>Unlimited Dynamic QR Gateways</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-cyan-400 flex-shrink-0" />
-                    <span>50 GB Cloud Asset Storage</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-cyan-400 flex-shrink-0" />
-                    <span>Argon2id Password Protection</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-cyan-400 flex-shrink-0" />
-                    <span>Custom Expiration Timers & View-Only</span>
-                  </li>
-                </ul>
-
-                <Link
-                  href="/signup"
-                  className="block w-full rounded-xl bg-cyan-500 py-3 text-center text-xs font-bold text-slate-950 hover:bg-cyan-400 transition-colors shadow-lg shadow-cyan-500/25"
-                >
-                  Upgrade to Pro Gateway
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* FAQ Accordion Section */}
         <section id="faq" className="border-t border-slate-900 bg-slate-950 py-24 px-6">
           <div className="mx-auto max-w-4xl">
@@ -447,24 +342,6 @@ export default function LandingPage() {
                 </Link>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Final Call to Action */}
-        <section className="border-t border-slate-900 bg-gradient-to-b from-slate-950 to-cyan-950/30 py-24 px-6 text-center">
-          <div className="mx-auto max-w-3xl">
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-              Start Delivering Content Smarter
-            </h2>
-            <p className="text-slate-300 text-base sm:text-lg mb-8 max-w-xl mx-auto">
-              Free tier includes 2 active dynamic codes with 100MB cloud storage. Mint your first portal in under 30 seconds.
-            </p>
-            <Link
-              href="/signup"
-              className="inline-flex items-center gap-2 rounded-xl bg-cyan-500 px-8 py-4 text-base font-bold text-slate-950 hover:bg-cyan-400 shadow-xl shadow-cyan-500/20 transition-all active:scale-[0.98]"
-            >
-              Create Your First Dynamic QR <ArrowRight className="h-5 w-5" />
-            </Link>
           </div>
         </section>
       </main>
