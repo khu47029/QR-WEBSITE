@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { getCurrentUser } from "@/lib/session";
-import { getQrCodesByOwner, getScanCountsByQrIds } from "@/lib/queries";
+import { getCurrentUser } from "@/lib/auth/session";
+import { getQrCodesByOwner } from "@/lib/qr/queries";
+import { getScanCountsByQrIds } from "@/lib/qr/analytics";
 import { GatewayListView } from "@/components/dashboard/gateway-list-view";
 import {
   Plus,

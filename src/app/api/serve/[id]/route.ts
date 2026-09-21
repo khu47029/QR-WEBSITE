@@ -3,9 +3,9 @@ import { cookies } from "next/headers";
 import { db } from "@/db";
 import { files, contentVersions, qrCodes, accessRules } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { getObject } from "@/lib/storage";
-import { verifyViewerSessionToken } from "@/lib/crypto";
-import { getCurrentUser } from "@/lib/session";
+import { getObject } from "@/lib/storage/storage";
+import { verifyViewerSessionToken } from "@/lib/security/crypto";
+import { getCurrentUser } from "@/lib/auth/session";
 
 /**
  * The ONLY path by which stored bytes reach a client.
@@ -120,6 +120,7 @@ export async function GET(
       "Referrer-Policy": "no-referrer",
       // Access can be revoked at any time, so shared caches must not keep copies.
       "Cache-Control": "private, no-store, must-revalidate",
+      "X-Robots-Tag": "noindex, nofollow",
     },
   });
 }
@@ -143,6 +144,6 @@ function buildContentDisposition(type: string, filename: string): string {
 function deny(status: number, message: string) {
   return NextResponse.json(
     { error: message },
-    { status, headers: { "Cache-Control": "private, no-store" } }
+    { status, headers: { "Cache-Control": "private, no-store", "X-Robots-Tag": "noindex, nofollow" } }
   );
 }

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
-import { uploadFiles } from "@/lib/client-upload";
+import { uploadFiles } from "@/lib/storage/client-upload";
 import {
   Link2,
   FileText,

@@ -23,6 +23,8 @@ import {
   Play
 } from "lucide-react";
 
+import { getBaseUrl } from "@/lib/seo/site";
+
 interface ContentPreset {
   id: string;
   name: string;
@@ -46,6 +48,8 @@ interface ContentPreset {
   };
 }
 
+const baseUrl = getBaseUrl();
+
 const PRESETS: ContentPreset[] = [
   {
     id: "doc",
@@ -61,7 +65,7 @@ const PRESETS: ContentPreset[] = [
       expiry: "Valid for 30 Days",
       token: "tok_arch_8f9c2",
     },
-    payload: "https://qrcontent.io/r/tok_arch_8f9c2",
+    payload: `${baseUrl}/r/tok_arch_8f9c2`,
     viewerPreview: {
       title: "Architectural Blueprints v4.0",
       subtitle: "Verified PDF Document · 4.2 MB",
@@ -83,7 +87,7 @@ const PRESETS: ContentPreset[] = [
       expiry: "Permanent Active",
       token: "tok_prod_44d1a",
     },
-    payload: "https://qrcontent.io/r/tok_prod_44d1a",
+    payload: `${baseUrl}/r/tok_prod_44d1a`,
     viewerPreview: {
       title: "Redirecting to Destination…",
       subtitle: "https://cloud.enterprise.io/portal",
@@ -105,7 +109,7 @@ const PRESETS: ContentPreset[] = [
       expiry: "Self-Destruct on Access",
       token: "tok_vault_90e3f",
     },
-    payload: "https://qrcontent.io/r/tok_vault_90e3f",
+    payload: `${baseUrl}/r/tok_vault_90e3f`,
     viewerPreview: {
       title: "Protected Memo Unlocked",
       subtitle: "Argon2id Session Validated ✓",
@@ -127,7 +131,7 @@ const PRESETS: ContentPreset[] = [
       expiry: "Permanent Active",
       token: "tok_press_66b7c",
     },
-    payload: "https://qrcontent.io/r/tok_press_66b7c",
+    payload: `${baseUrl}/r/tok_press_66b7c`,
     viewerPreview: {
       title: "Press Kit & Brand Assets",
       subtitle: "5 Files · 18.4 MB Total Package",

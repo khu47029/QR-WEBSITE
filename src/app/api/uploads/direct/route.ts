@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getCurrentUser } from "@/lib/session";
-import { checkRateLimit } from "@/lib/rate-limit";
-import { putObject } from "@/lib/storage";
+import { getCurrentUser } from "@/lib/auth/session";
+import { checkRateLimit } from "@/lib/security/rate-limit";
+import { putObject } from "@/lib/storage/storage";
 
 /**
  * Local-development stand-in for an S3/R2 presigned PUT.

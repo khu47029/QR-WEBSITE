@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { verifyUserPassword } from "@/lib/queries";
-import { setSessionCookie } from "@/lib/session";
-import { checkRateLimit } from "@/lib/rate-limit";
+import { verifyUserPassword } from "@/lib/auth/user-queries";
+import { setSessionCookie } from "@/lib/auth/session";
+import { checkRateLimit } from "@/lib/security/rate-limit";
 import { runMigrations } from "@/db/migrate";
 
 const schema = z.object({

@@ -1,15 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getCurrentUser } from "@/lib/session";
+import { getCurrentUser } from "@/lib/auth/session";
 import {
   getQrCodeForOwner,
   softDeleteQrCode,
   setQrStatus,
   replaceQrContent,
-} from "@/lib/queries";
+} from "@/lib/qr/queries";
 import { db } from "@/db";
 import { qrCodes, accessRules } from "@/db/schema";
 import { eq, and } from "drizzle-orm";
-import { hashPassword } from "@/lib/crypto";
+import { hashPassword } from "@/lib/security/crypto";
 import { z } from "zod";
 
 const patchSchema = z.object({

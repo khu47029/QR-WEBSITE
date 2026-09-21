@@ -1,4 +1,5 @@
 import QRCode from "qrcode";
+import { getBaseUrl } from "@/lib/seo/site";
 
 export interface QrOptions {
   errorCorrectionLevel?: "L" | "M" | "Q" | "H";
@@ -52,6 +53,6 @@ export async function generateQrSvg(
  * This is the only thing ever encoded into the QR image (Blueprint §21).
  */
 export function buildResolverUrl(token: string): string {
-  const base = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const base = getBaseUrl();
   return `${base}/r/${token}`;
 }

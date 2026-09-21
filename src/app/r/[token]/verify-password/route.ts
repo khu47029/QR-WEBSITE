@@ -2,13 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/db";
 import { accessRules, qrCodes } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { verifyPassword, createViewerSessionToken } from "@/lib/crypto";
+import { verifyPassword, createViewerSessionToken } from "@/lib/security/crypto";
 import {
   checkRateLimit,
   recordPasswordFailure,
   resetPasswordFailures,
   isPasswordLocked,
-} from "@/lib/rate-limit";
+} from "@/lib/security/rate-limit";
 import { z } from "zod";
 
 const schema = z.object({

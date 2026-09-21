@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { getCurrentUser } from "@/lib/session";
-import { createQrCode, getQrCodesByOwner } from "@/lib/queries";
-import { checkRateLimit } from "@/lib/rate-limit";
+import { getCurrentUser } from "@/lib/auth/session";
+import {
+  createQrCode,
+  getQrCodesByOwner,
+} from "@/lib/qr/queries";
+import { checkRateLimit } from "@/lib/security/rate-limit";
 import { runMigrations } from "@/db/migrate";
 import { db } from "@/db";
 import { textContent, urlContent } from "@/db/schema";
-import { generateId } from "@/lib/crypto";
+import { generateId } from "@/lib/security/crypto";
 
 const createSchema = z.object({
   name: z.string().min(1).max(200),

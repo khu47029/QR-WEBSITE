@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { buildResolverUrl } from "@/lib/qr-generator";
+import { buildResolverUrl } from "@/lib/qr/qr-generator";
 import { formatDate } from "@/lib/utils";
 import { CopyLinkButton } from "@/components/dashboard/copy-link-button";
 import {

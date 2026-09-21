@@ -6,8 +6,8 @@ import {
   getObject,
   deleteObject,
   getPresignedUploadUrl,
-} from "@/lib/storage";
-import { parseZipCentralDirectory } from "@/lib/zip-parser";
+} from "@/lib/storage/storage";
+import { parseZipCentralDirectory } from "@/lib/files/zip-parser";
 import zlib from "zlib";
 
 const OWNER = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa";

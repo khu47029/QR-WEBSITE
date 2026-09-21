@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getCurrentUser } from "@/lib/session";
-import { replaceQrContent } from "@/lib/queries";
+import { getCurrentUser } from "@/lib/auth/session";
+import { replaceQrContent } from "@/lib/qr/queries";
 import { db } from "@/db";
 import { textContent, urlContent } from "@/db/schema";
-import { generateId } from "@/lib/crypto";
+import { generateId } from "@/lib/security/crypto";
 import { z } from "zod";
 import { runMigrations } from "@/db/migrate";
 

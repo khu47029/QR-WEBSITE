@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getCurrentUser } from "@/lib/session";
-import { getQrCodeForOwner } from "@/lib/queries";
-import { generateQrPng, generateQrSvg, buildResolverUrl } from "@/lib/qr-generator";
+import { getCurrentUser } from "@/lib/auth/session";
+import { getQrCodeForOwner } from "@/lib/qr/queries";
+import { generateQrPng, generateQrSvg, buildResolverUrl } from "@/lib/qr/qr-generator";
 
 /**
  * Renders the owner's QR code as a downloadable PNG or SVG.

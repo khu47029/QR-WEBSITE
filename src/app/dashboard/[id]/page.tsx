@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getCurrentUser } from "@/lib/session";
-import { getFullQrDataForOwner } from "@/lib/queries";
-import { buildResolverUrl, generateQrPng } from "@/lib/qr-generator";
+import { getCurrentUser } from "@/lib/auth/session";
+import { getFullQrDataForOwner } from "@/lib/qr/queries";
+import { buildResolverUrl, generateQrPng } from "@/lib/qr/qr-generator";
 import { QrDetail } from "@/components/dashboard/qr-detail";
 import { ArrowLeft } from "lucide-react";
 

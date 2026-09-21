@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { sanitizeFilename } from "./utils";
+import { sanitizeFilename } from "../utils";
 
 export interface StorageObjectMetadata {
   storageKey: string;

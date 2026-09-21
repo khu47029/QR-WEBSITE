@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getCurrentUser } from "@/lib/session";
-import { checkRateLimit } from "@/lib/rate-limit";
-import { buildStorageKey, getPresignedUploadUrl } from "@/lib/storage";
+import { getCurrentUser } from "@/lib/auth/session";
+import { checkRateLimit } from "@/lib/security/rate-limit";
+import { buildStorageKey, getPresignedUploadUrl } from "@/lib/storage/storage";
 import { db } from "@/db";
 import { qrCodes, contentVersions } from "@/db/schema";
 import { eq, and } from "drizzle-orm";

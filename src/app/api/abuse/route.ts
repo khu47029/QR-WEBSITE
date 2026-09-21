@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/db";
 import { abuseReports, qrCodes } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { generateId, hashIpDaily } from "@/lib/crypto";
-import { checkRateLimit } from "@/lib/rate-limit";
+import { generateId, hashIpDaily } from "@/lib/security/crypto";
+import { checkRateLimit } from "@/lib/security/rate-limit";
 import { runMigrations } from "@/db/migrate";
 import { z } from "zod";
 

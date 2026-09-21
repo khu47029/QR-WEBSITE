@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { verifyMagicBytes } from "@/lib/magic-bytes";
+import { verifyMagicBytes } from "@/lib/security/magic-bytes";
 import { sanitizeFilename, formatBytes } from "@/lib/utils";
 
 const PDF = Buffer.from("%PDF-1.7\n...");

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
-import { uploadFiles } from "@/lib/client-upload";
+import { uploadFiles } from "@/lib/storage/client-upload";
 import { formatBytes, formatDate } from "@/lib/utils";
 import { CopyLinkButton } from "@/components/dashboard/copy-link-button";
 import {

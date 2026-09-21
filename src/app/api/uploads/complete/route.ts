@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getCurrentUser } from "@/lib/session";
+import { getCurrentUser } from "@/lib/auth/session";
 import { db } from "@/db";
 import { files, contentVersions, qrCodes } from "@/db/schema";
 import { eq, and } from "drizzle-orm";
-import { generateId } from "@/lib/crypto";
-import { getObject, isValidStorageKey } from "@/lib/storage";
-import { verifyMagicBytes } from "@/lib/magic-bytes";
-import { parseZipCentralDirectory } from "@/lib/zip-parser";
+import { generateId } from "@/lib/security/crypto";
+import { getObject, isValidStorageKey } from "@/lib/storage/storage";
+import { verifyMagicBytes } from "@/lib/security/magic-bytes";
+import { parseZipCentralDirectory } from "@/lib/files/zip-parser";
 import { z } from "zod";
 import crypto from "crypto";
 
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
   if (!magicResult.valid) {
     // Delete the invalid file immediately
     try {
-      const { deleteObject } = await import("@/lib/storage");
+      const { deleteObject } = await import("@/lib/storage/storage");
       await deleteObject(storageKey);
     } catch {}
     return NextResponse.json(

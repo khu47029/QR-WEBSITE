@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getCurrentUser } from "@/lib/session";
+import { getCurrentUser } from "@/lib/auth/session";
 import { qrScans, qrCodes } from "@/db/schema";
 import { db } from "@/db";
 import { eq, and, desc, gte } from "drizzle-orm";

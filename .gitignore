@@ -8,5 +8,8 @@ node_modules/
 qr_platform.db
 qr_platform.db-shm
 qr_platform.db-wal
+*.db
+*.db-*
+*.zip
 .claude/
 .gemini/

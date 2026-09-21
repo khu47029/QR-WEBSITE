@@ -7,6 +7,9 @@ import {
   createUser,
   getUserByEmail,
   verifyUserPassword,
+} from "@/lib/auth/user-queries";
+
+import {
   createQrCode,
   getQrByToken,
   getQrCodesByOwner,
@@ -16,11 +19,14 @@ import {
   replaceQrContent,
   softDeleteQrCode,
   setQrStatus,
+} from "@/lib/qr/queries";
+
+import {
   recordScan,
   getScanCount,
-} from "@/lib/queries";
-import { generateId } from "@/lib/crypto";
-import { verifyPassword } from "@/lib/crypto";
+} from "@/lib/qr/analytics";
+import { generateId } from "@/lib/security/crypto";
+import { verifyPassword } from "@/lib/security/crypto";
 
 let alice: Awaited<ReturnType<typeof createUser>>;
 let bob: Awaited<ReturnType<typeof createUser>>;
@@ -329,16 +335,25 @@ describe("privacy-first scan analytics", () => {
     expect(await getScanCount(qr.id)).toBe(2);
 
     // Guard against a schema change silently reintroducing a raw-IP column.
-    const columns = (
-      await db.all<any>(sql`PRAGMA table_info(qr_scans)`)
-    ).map((r: any) => (Array.isArray(r) ? r[1] : r.name));
-    expect(columns).not.toContain("ip");
-    expect(columns).not.toContain("ip_address");
-    expect(columns).toContain("session_hash");
-  });
+const columns = await db.execute<{
+  column_name: string;
+}>(
+  sql`
+    SELECT column_name
+    FROM information_schema.columns
+    WHERE table_name = 'qr_scans'
+  `
+);
 
-  it("starts every new code at zero scans", async () => {
-    const qr = await createQrCode(baseInput(alice.id));
-    expect(await getScanCount(qr.id)).toBe(0);
-  });
+const columnNames = columns.rows.map((row) => row.column_name);
+
+expect(columnNames).not.toContain("ip");
+expect(columnNames).not.toContain("ip_address");
+expect(columnNames).toContain("session_hash");
+});
+
+it("starts every new code at zero scans", async () => {
+  const qr = await createQrCode(baseInput(alice.id));
+  expect(await getScanCount(qr.id)).toBe(0);
+});
 });

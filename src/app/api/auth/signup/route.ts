@@ -3,9 +3,9 @@ import { z } from "zod";
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { generateId, hashPassword } from "@/lib/crypto";
-import { setSessionCookie } from "@/lib/session";
-import { checkRateLimit } from "@/lib/rate-limit";
+import { generateId, hashPassword } from "@/lib/security/crypto";
+import { setSessionCookie } from "@/lib/auth/session";
+import { checkRateLimit } from "@/lib/security/rate-limit";
 import { runMigrations } from "@/db/migrate";
 
 const schema = z.object({

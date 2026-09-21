@@ -1,8 +1,9 @@
 import { notFound, redirect } from "next/navigation";
 import { cookies, headers } from "next/headers";
-import { getQrByToken, recordScan } from "@/lib/queries";
-import { verifyViewerSessionToken, hashIpDaily } from "@/lib/crypto";
-import { detectDeviceType, detectBrowserFamily } from "@/lib/session";
+import { getQrByToken } from "@/lib/qr/queries";
+import { recordScan } from "@/lib/qr/analytics";
+import { verifyViewerSessionToken, hashIpDaily } from "@/lib/security/crypto";
+import { detectDeviceType, detectBrowserFamily } from "@/lib/auth/session";
 import { PasswordGate } from "@/components/viewer/password-gate";
 import { TextViewer } from "@/components/viewer/text-viewer";
 import { ImageGallery } from "@/components/viewer/image-gallery";
@@ -11,8 +12,11 @@ import { ZipManifestViewer } from "@/components/viewer/zip-manifest-viewer";
 import { BundleViewer } from "@/components/viewer/bundle-viewer";
 import { AbuseReportButton } from "@/components/viewer/abuse-report-button";
 import { ShieldCheck, Clock, Trash2, PowerOff, Sparkles, AlertCircle, Eye } from "lucide-react";
+import { constructNoIndexMetadata } from "@/lib/seo/metadata";
 
 export const dynamic = "force-dynamic";
+
+export const metadata = constructNoIndexMetadata("Access Portal");
 
 interface Props {
   params: Promise<{ token: string }>;

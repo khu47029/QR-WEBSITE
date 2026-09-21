@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { verifyViewerSessionToken } from "@/lib/crypto";
+import { verifyViewerSessionToken } from "@/lib/security/crypto";
 import type { User } from "@/db/schema";
 
 const SESSION_COOKIE = "qr_session";

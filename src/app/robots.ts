@@ -1,14 +1,32 @@
 import { MetadataRoute } from "next";
+import { getBaseUrl } from "@/lib/seo/site";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://qrcontent.io";
+  const baseUrl = getBaseUrl();
 
   return {
     rules: [
       {
         userAgent: "*",
-        allow: ["/", "/login", "/signup", "/legal/aup", "/legal/privacy", "/r/*"],
-        disallow: ["/dashboard", "/dashboard/*", "/api/*"],
+        allow: [
+          "/",
+          "/dynamic-qr",
+          "/pdf-qr",
+          "/image-qr",
+          "/multi-file-qr",
+          "/security",
+          "/faq",
+          "/legal/aup",
+          "/legal/privacy",
+        ],
+        disallow: [
+          "/dashboard",
+          "/dashboard/*",
+          "/api/*",
+          "/r/*",
+          "/login",
+          "/signup",
+        ],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
