@@ -74,13 +74,13 @@ export default function DynamicQrPage() {
 
           {/* Hero Header */}
           <header className="py-8 text-center max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-mono font-medium text-cyan-300">
-              <RefreshCw className="h-3.5 w-3.5 animate-spin-slow" />
-              <span>SERVER-SIDE POINTER MUTATION</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/90 px-3.5 py-1 text-[11px] font-mono font-medium text-slate-300 ring-1 ring-white/[0.04]">
+              <RefreshCw className="h-3.5 w-3.5 text-cyan-400" />
+              <span className="text-cyan-300">SERVER-SIDE POINTER MUTATION</span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
               Dynamic QR Codes: <br />
-              <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent">
                 Never Reprint Physical Ink Again
               </span>
             </h1>
@@ -90,48 +90,48 @@ export default function DynamicQrPage() {
             <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/signup"
-                className="rounded-xl bg-cyan-500 px-6 py-3 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-lg shadow-cyan-500/20 transition-all active:scale-[0.98] inline-flex items-center gap-2"
+                className="rounded-xl bg-cyan-500 px-6 py-2.5 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-md shadow-cyan-500/20 transition-all active:scale-[0.98] inline-flex items-center gap-2"
               >
                 Create Dynamic QR <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link
                 href="/faq"
-                className="rounded-xl border border-slate-800 bg-slate-900/80 px-5 py-3 text-xs font-semibold text-slate-300 hover:bg-slate-800 transition-colors"
+                className="rounded-xl border border-slate-800 bg-slate-900/90 px-5 py-2.5 text-xs font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition-colors"
               >
                 Compare Static vs Dynamic
               </Link>
             </div>
           </header>
 
-          {/* Direct-Answer Section for AEO / LLM scrapers */}
-          <section className="my-16 rounded-3xl border border-cyan-500/30 bg-cyan-950/20 p-8 sm:p-10 backdrop-blur-md">
-            <div className="flex items-center gap-3 text-xs font-mono text-cyan-400 uppercase tracking-widest font-semibold mb-3">
-              <Zap className="h-4 w-4" />
-              <span>DIRECT ANSWER / SPECIFICATION</span>
+          {/* Direct-Answer Specification Panel */}
+          <section className="my-14 rounded-2xl border border-slate-800/90 bg-slate-900/80 p-6 sm:p-9 ring-1 ring-white/[0.04]">
+            <div className="flex items-center gap-2.5 text-[11px] font-mono text-cyan-400 uppercase tracking-widest font-semibold mb-3">
+              <Zap className="h-3.5 w-3.5 text-cyan-400" />
+              <span>DIRECT SPECIFICATION</span>
             </div>
-            <h2 className="text-2xl font-bold text-white tracking-tight mb-4">
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight mb-3">
               How Dynamic Pointer Rotation Works
             </h2>
-            <p className="text-slate-200 text-sm leading-relaxed mb-6">
-              When a QRAZEN dynamic QR code is generated, the system creates an immutable, unguessable cryptographic token (128+ bits of entropy). The physical QR matrix encodes only the secure resolver URL (<code className="text-cyan-300 font-mono text-xs">/r/[token]</code>). In the database, this token points to a specific <strong className="text-white">content version</strong> containing your uploaded PDF, gallery, ZIP, or URL payload.
+            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
+              When a QRAZEN dynamic QR code is generated, the system creates an immutable, unguessable cryptographic token (128+ bits of entropy). The physical QR matrix encodes only the secure resolver URL (<code className="text-cyan-300 font-mono text-xs bg-slate-950 px-1.5 py-0.5 rounded border border-slate-800">/r/[token]</code>). In the database, this token points to a specific <strong className="text-white">content version</strong> containing your uploaded PDF, gallery, ZIP, or URL payload.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/90 p-5 space-y-2">
-                <div className="text-cyan-400 font-mono text-xs font-bold">STAGE 01</div>
+              <div className="rounded-xl border border-slate-800/80 bg-slate-950/70 p-5 space-y-2">
+                <div className="text-cyan-400 font-mono text-[11px] font-bold">STAGE 01</div>
                 <h3 className="text-white font-bold text-sm">Scan & Token Dispatch</h3>
                 <p className="text-xs text-slate-400 leading-relaxed">
                   Mobile camera scans the static ink matrix, requesting the unguessable resolver token from the edge.
                 </p>
               </div>
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/90 p-5 space-y-2">
-                <div className="text-cyan-400 font-mono text-xs font-bold">STAGE 02</div>
+              <div className="rounded-xl border border-slate-800/80 bg-slate-950/70 p-5 space-y-2">
+                <div className="text-cyan-400 font-mono text-[11px] font-bold">STAGE 02</div>
                 <h3 className="text-white font-bold text-sm">Server Pointer Evaluation</h3>
                 <p className="text-xs text-slate-400 leading-relaxed">
                   The resolver checks status (active, expired, disabled), verifies Argon2id password rules, and queries the latest content version.
                 </p>
               </div>
-              <div className="rounded-2xl border border-slate-800 bg-slate-900/90 p-5 space-y-2">
-                <div className="text-cyan-400 font-mono text-xs font-bold">STAGE 03</div>
+              <div className="rounded-xl border border-slate-800/80 bg-slate-950/70 p-5 space-y-2">
+                <div className="text-cyan-400 font-mono text-[11px] font-bold">STAGE 03</div>
                 <h3 className="text-white font-bold text-sm">Instant Payload Delivery</h3>
                 <p className="text-xs text-slate-400 leading-relaxed">
                   The active payload is rendered inside a sandboxed, zero-install mobile viewer in under 50ms.
@@ -141,7 +141,7 @@ export default function DynamicQrPage() {
           </section>
 
           {/* Architectural Comparison */}
-          <section className="my-16 space-y-8">
+          <section className="my-14 space-y-6">
             <div className="text-center max-w-2xl mx-auto">
               <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
                 Static QR vs. QRAZEN Dynamic Gateway
@@ -151,38 +151,38 @@ export default function DynamicQrPage() {
               </p>
             </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse rounded-2xl border border-slate-800 text-left text-xs sm:text-sm">
+            <div className="overflow-x-auto rounded-2xl border border-slate-800/90 ring-1 ring-white/[0.04]">
+              <table className="w-full border-collapse text-left text-xs sm:text-sm">
                 <thead>
-                  <tr className="border-b border-slate-800 bg-slate-900/80 font-mono text-slate-300">
-                    <th className="p-4">Capability</th>
-                    <th className="p-4 text-red-400">Traditional Static QR</th>
-                    <th className="p-4 text-cyan-400">QRAZEN Dynamic QR</th>
+                  <tr className="border-b border-slate-800/90 bg-slate-900/90 font-mono text-slate-300">
+                    <th className="p-4 font-semibold">Capability</th>
+                    <th className="p-4 text-rose-400 font-semibold">Traditional Static QR</th>
+                    <th className="p-4 text-cyan-300 font-semibold">QRAZEN Dynamic QR</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/80 font-mono text-xs">
+                <tbody className="divide-y divide-slate-800/70 font-mono text-xs">
                   <tr className="bg-slate-950/60">
-                    <td className="p-4 font-bold text-white">Content Updatability</td>
+                    <td className="p-4 font-bold text-slate-200">Content Updatability</td>
                     <td className="p-4 text-slate-400">Impossible. Hardcoded into ink.</td>
                     <td className="p-4 text-cyan-300">Instant. Pointer mutation anytime.</td>
                   </tr>
                   <tr className="bg-slate-900/30">
-                    <td className="p-4 font-bold text-white">Password Protection</td>
+                    <td className="p-4 font-bold text-slate-200">Password Protection</td>
                     <td className="p-4 text-slate-400">None. Public to anyone who scans.</td>
                     <td className="p-4 text-cyan-300">Argon2id cryptographic server gate.</td>
                   </tr>
                   <tr className="bg-slate-950/60">
-                    <td className="p-4 font-bold text-white">Lifespan & Expiration</td>
+                    <td className="p-4 font-bold text-slate-200">Lifespan & Expiration</td>
                     <td className="p-4 text-slate-400">Permanent forever (cannot shut off).</td>
                     <td className="p-4 text-cyan-300">Scheduled expiry timers & pause toggle.</td>
                   </tr>
                   <tr className="bg-slate-900/30">
-                    <td className="p-4 font-bold text-white">Scan Telemetry</td>
+                    <td className="p-4 font-bold text-slate-200">Scan Telemetry</td>
                     <td className="p-4 text-slate-400">Zero data or scan counts.</td>
                     <td className="p-4 text-cyan-300">Privacy-first daily salted telemetry.</td>
                   </tr>
                   <tr className="bg-slate-950/60">
-                    <td className="p-4 font-bold text-white">Viewer App Requirement</td>
+                    <td className="p-4 font-bold text-slate-200">Viewer App Requirement</td>
                     <td className="p-4 text-slate-400">Native camera.</td>
                     <td className="p-4 text-cyan-300">Native camera + zero-app web viewer.</td>
                   </tr>
@@ -192,15 +192,15 @@ export default function DynamicQrPage() {
           </section>
 
           {/* FAQ Section */}
-          <section className="my-16 space-y-6">
-            <h2 className="text-2xl font-bold text-white tracking-tight">
+          <section className="my-14 space-y-5">
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Frequently Asked Questions About Dynamic QR Codes
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-3.5">
               {FAQS.map((faq, index) => (
                 <div
                   key={index}
-                  className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-2"
+                  className="rounded-xl sm:rounded-2xl border border-slate-800/80 bg-slate-900/50 p-5 sm:p-6 space-y-2"
                 >
                   <h3 className="text-white font-bold text-sm sm:text-base">{faq.q}</h3>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{faq.a}</p>

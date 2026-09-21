@@ -52,24 +52,24 @@ export default function LandingPage() {
 
       <main className="flex-1">
         {/* Top ambient glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] bg-gradient-to-b from-cyan-500/10 via-blue-600/5 to-transparent blur-3xl pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[450px] bg-gradient-to-b from-cyan-500/8 via-blue-600/3 to-transparent blur-3xl pointer-events-none" />
 
         {/* Hero Header Section */}
-        <section className="relative pt-20 pb-16 px-6">
+        <section className="relative pt-16 sm:pt-24 pb-14 px-6">
           <div className="mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-mono font-medium text-cyan-300 mb-6">
-              <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
-              NEXT-GEN DYNAMIC ACCESS INFRASTRUCTURE
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/90 px-3.5 py-1 text-[11px] font-mono font-medium text-slate-300 ring-1 ring-white/[0.04] mb-6">
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan-400"></span>
+              <span className="text-cyan-300">DYNAMIC ACCESS INFRASTRUCTURE</span>
             </div>
 
-            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl sm:leading-[1.1]">
+            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl sm:leading-[1.12]">
               Content Becomes <br />
-              <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent">
                 Instant Access
               </span>
             </h1>
 
-            <p className="mt-6 text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
+            <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto font-normal">
               Transform PDFs, images, archives, and confidential documents into a single dynamic QR gateway.
               Swap content anytime, enforce password gates, and control lifespans — without reprinting a single code.
             </p>
@@ -77,13 +77,13 @@ export default function LandingPage() {
             <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center">
               <Link
                 href="/signup"
-                className="w-full sm:w-auto rounded-xl bg-cyan-500 px-8 py-3.5 text-sm font-bold text-slate-950 shadow-xl shadow-cyan-500/25 hover:bg-cyan-400 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
+                className="w-full sm:w-auto rounded-xl bg-cyan-500 px-7 py-3 text-xs sm:text-sm font-bold text-slate-950 shadow-md shadow-cyan-500/20 hover:bg-cyan-400 hover:shadow-cyan-500/30 transition-all active:scale-[0.98] flex items-center justify-center gap-2"
               >
                 Create Free Dynamic QR <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/dynamic-qr"
-                className="w-full sm:w-auto rounded-xl border border-slate-800 bg-slate-900/80 px-6 py-3.5 text-sm font-semibold text-slate-300 hover:bg-slate-800 hover:text-white transition-colors flex items-center justify-center gap-2"
+                className="w-full sm:w-auto rounded-xl border border-slate-800 bg-slate-900/90 px-6 py-3 text-xs sm:text-sm font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white hover:border-slate-700 transition-all flex items-center justify-center gap-2"
               >
                 See How It Works <ArrowRight className="h-4 w-4" />
               </Link>
@@ -91,51 +91,51 @@ export default function LandingPage() {
           </div>
 
           {/* Signature Animated Flagship Product Showcase */}
-          <div className="mt-14">
+          <div className="mt-12 sm:mt-16">
             <HeroProductShowcase />
           </div>
         </section>
 
-        {/* Quick Capability Bar (High Value Internal Linking) */}
-        <section className="border-y border-slate-900 bg-slate-900/30 py-6 px-6">
-          <div className="mx-auto max-w-6xl">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center font-mono text-xs">
+        {/* Quick Capability Dock */}
+        <section className="border-y border-slate-800/80 bg-slate-950/60 py-6 px-6">
+          <div className="mx-auto max-w-5xl">
+            <div className="grid grid-cols-2 sm:grid-cols-4 rounded-2xl border border-slate-800/80 bg-slate-900/50 backdrop-blur-sm divide-y sm:divide-y-0 sm:divide-x divide-slate-800/60 overflow-hidden text-center font-mono text-xs">
               <Link
                 href="/dynamic-qr"
-                className="rounded-xl border border-slate-800/80 bg-slate-900/60 p-3 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/30 transition-all"
+                className="p-3.5 text-slate-300 hover:text-cyan-300 hover:bg-slate-800/40 transition-colors group"
               >
-                <RefreshCw className="h-4 w-4 mx-auto mb-1 text-cyan-400" />
-                <span>Dynamic QR</span>
+                <RefreshCw className="h-4 w-4 mx-auto mb-1.5 text-cyan-400 group-hover:scale-105 transition-transform" />
+                <span className="font-semibold">Dynamic QR</span>
               </Link>
               <Link
                 href="/pdf-qr"
-                className="rounded-xl border border-slate-800/80 bg-slate-900/60 p-3 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/30 transition-all"
+                className="p-3.5 text-slate-300 hover:text-cyan-300 hover:bg-slate-800/40 transition-colors group"
               >
-                <FileText className="h-4 w-4 mx-auto mb-1 text-cyan-400" />
-                <span>PDF Sharing</span>
+                <FileText className="h-4 w-4 mx-auto mb-1.5 text-cyan-400 group-hover:scale-105 transition-transform" />
+                <span className="font-semibold">PDF Sharing</span>
               </Link>
               <Link
                 href="/image-qr"
-                className="rounded-xl border border-slate-800/80 bg-slate-900/60 p-3 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/30 transition-all"
+                className="p-3.5 text-slate-300 hover:text-cyan-300 hover:bg-slate-800/40 transition-colors group"
               >
-                <ImageIcon className="h-4 w-4 mx-auto mb-1 text-cyan-400" />
-                <span>Image Galleries</span>
+                <ImageIcon className="h-4 w-4 mx-auto mb-1.5 text-cyan-400 group-hover:scale-105 transition-transform" />
+                <span className="font-semibold">Image Galleries</span>
               </Link>
               <Link
                 href="/multi-file-qr"
-                className="rounded-xl border border-slate-800/80 bg-slate-900/60 p-3 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/30 transition-all"
+                className="p-3.5 text-slate-300 hover:text-cyan-300 hover:bg-slate-800/40 transition-colors group"
               >
-                <FolderArchive className="h-4 w-4 mx-auto mb-1 text-cyan-400" />
-                <span>Multi-File Bundles</span>
+                <FolderArchive className="h-4 w-4 mx-auto mb-1.5 text-cyan-400 group-hover:scale-105 transition-transform" />
+                <span className="font-semibold">Multi-File Bundles</span>
               </Link>
             </div>
           </div>
         </section>
 
         {/* Storytelling 01: The Problem & Solution */}
-        <section id="how-it-works" className="relative border-t border-slate-900 bg-slate-950/60 py-24 px-6">
+        <section id="how-it-works" className="relative border-t border-slate-900 bg-slate-950 py-20 sm:py-24 px-6">
           <div className="mx-auto max-w-6xl">
-            <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="text-center max-w-3xl mx-auto mb-14">
               <h2 className="text-xs font-mono font-semibold uppercase tracking-widest text-cyan-400 mb-2">
                 ARCHITECTURAL FOUNDATION
               </h2>
@@ -147,51 +147,57 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               {/* The Static Trap */}
-              <div className="rounded-3xl border border-red-950/60 bg-red-950/10 p-8 relative overflow-hidden">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-500/20 text-red-400 font-bold">
+              <div className="rounded-2xl border border-slate-800/90 bg-slate-900/40 p-6 sm:p-8 relative">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/20 font-mono text-sm font-bold">
                     ✕
                   </div>
-                  <h4 className="text-lg font-bold text-red-200">The Static QR Trap</h4>
+                  <div>
+                    <h4 className="text-base sm:text-lg font-bold text-slate-200">The Static QR Limitation</h4>
+                    <span className="text-[11px] font-mono text-rose-400/80">PERMANENT ENCODING FLAW</span>
+                  </div>
                 </div>
-                <ul className="space-y-3 text-sm text-slate-300">
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-400 mt-0.5">•</span>
-                    <span><strong>Permanent Link Lock:</strong> Broken links require physical re-printing of packaging and signage.</span>
+                <ul className="space-y-3.5 text-xs sm:text-sm text-slate-300">
+                  <li className="flex items-start gap-2.5">
+                    <span className="text-rose-400 font-bold mt-0.5">•</span>
+                    <span><strong className="text-slate-200">Permanent Link Lock:</strong> Broken links require physical re-printing of packaging, signage, and merchandise.</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-400 mt-0.5">•</span>
-                    <span><strong>Zero Access Governance:</strong> Anyone with the image can access forever with no password or expiration.</span>
+                  <li className="flex items-start gap-2.5">
+                    <span className="text-rose-400 font-bold mt-0.5">•</span>
+                    <span><strong className="text-slate-200">Zero Access Governance:</strong> Anyone with the image can access indefinitely with no password gates or expiry lifespans.</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-red-400 mt-0.5">•</span>
-                    <span><strong>No Telemetry:</strong> Zero visibility into scan volume, device trends, or engagement.</span>
+                  <li className="flex items-start gap-2.5">
+                    <span className="text-rose-400 font-bold mt-0.5">•</span>
+                    <span><strong className="text-slate-200">No Telemetry:</strong> Zero visibility into scan volume, device trends, or real engagement metrics.</span>
                   </li>
                 </ul>
               </div>
 
               {/* The Dynamic Resolver Advantage */}
-              <div className="rounded-3xl border border-cyan-500/30 bg-cyan-950/20 p-8 relative overflow-hidden shadow-xl shadow-cyan-950/30">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-500 text-slate-950 font-bold">
+              <div className="rounded-2xl border border-cyan-500/30 bg-slate-900/70 p-6 sm:p-8 relative ring-1 ring-cyan-500/20 shadow-lg shadow-cyan-950/20">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-500 text-slate-950 font-mono text-sm font-bold">
                     ✓
                   </div>
-                  <h4 className="text-lg font-bold text-cyan-200">The QRAZEN Dynamic Gateway</h4>
+                  <div>
+                    <h4 className="text-base sm:text-lg font-bold text-white">The QRAZEN Dynamic Gateway</h4>
+                    <span className="text-[11px] font-mono text-cyan-400">SERVER-SIDE POINTER RESOLUTION</span>
+                  </div>
                 </div>
-                <ul className="space-y-3 text-sm text-slate-300">
-                  <li className="flex items-start gap-2">
+                <ul className="space-y-3.5 text-xs sm:text-sm text-slate-300">
+                  <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="h-4 w-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <span><strong>Live Pointer Mutation:</strong> Rotate PDFs, images, notes, or links instantly while preserving the printed QR.</span>
+                    <span><strong className="text-white">Live Pointer Mutation:</strong> Rotate PDFs, images, notes, or links instantly while preserving the printed QR matrix.</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="h-4 w-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <span><strong>Server-Side Access Control:</strong> Enforce Argon2id password gates and scheduled expiry dates.</span>
+                    <span><strong className="text-white">Server-Side Access Control:</strong> Enforce Argon2id password gates and scheduled expiry dates with instant cut-off.</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-2.5">
                     <CheckCircle2 className="h-4 w-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <span><strong>Privacy-Preserving Telemetry:</strong> Count scans and monitor device analytics without logging raw IP addresses.</span>
+                    <span><strong className="text-white">Privacy-Preserving Telemetry:</strong> Count scans and monitor device analytics without logging raw IP addresses.</span>
                   </li>
                 </ul>
               </div>
@@ -200,9 +206,9 @@ export default function LandingPage() {
         </section>
 
         {/* Feature Grid */}
-        <section id="features" className="border-t border-slate-900 bg-slate-900/40 py-24 px-6">
+        <section id="features" className="border-t border-slate-900 bg-slate-900/30 py-20 sm:py-24 px-6">
           <div className="mx-auto max-w-6xl">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-14">
               <h2 className="text-xs font-mono font-semibold uppercase tracking-widest text-cyan-400 mb-2">
                 COMPREHENSIVE CAPABILITIES
               </h2>
@@ -214,23 +220,23 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
               {features.map((f) => {
                 const Icon = f.icon;
                 return (
                   <div
                     key={f.title}
-                    className="group rounded-2xl border border-slate-800 bg-slate-900/80 p-6 transition-all duration-200 hover:border-slate-700 hover:bg-slate-800/80"
+                    className="group rounded-2xl border border-slate-800/80 bg-slate-900/70 p-6 transition-all duration-200 hover:border-slate-700 hover:bg-slate-800/70 ring-1 ring-white/[0.02]"
                   >
-                    <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 group-hover:scale-105 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all">
+                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80 group-hover:border-cyan-500/40 group-hover:text-cyan-300 transition-colors">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <h4 className="font-bold text-white mb-1.5 text-base">{f.title}</h4>
-                    <p className="text-sm text-slate-400 leading-relaxed mb-3">{f.description}</p>
+                    <h4 className="font-bold text-white mb-1.5 text-sm sm:text-base">{f.title}</h4>
+                    <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mb-3">{f.description}</p>
                     {f.href && (
                       <Link
                         href={f.href}
-                        className="text-xs font-mono text-cyan-400 hover:underline inline-flex items-center gap-1"
+                        className="text-xs font-mono text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1 font-medium"
                       >
                         Learn more <ArrowRight className="h-3 w-3" />
                       </Link>
@@ -243,9 +249,9 @@ export default function LandingPage() {
         </section>
 
         {/* Real-World Use Cases */}
-        <section id="use-cases" className="border-t border-slate-900 bg-slate-950 py-24 px-6">
+        <section id="use-cases" className="border-t border-slate-900 bg-slate-950 py-20 sm:py-24 px-6">
           <div className="mx-auto max-w-6xl">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-14">
               <h2 className="text-xs font-mono font-semibold uppercase tracking-widest text-cyan-400 mb-2">
                 REAL-WORLD IMPACT
               </h2>
@@ -257,18 +263,18 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {useCases.map((uc) => {
                 const Icon = uc.icon;
                 return (
                   <div
                     key={uc.title}
-                    className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-3"
+                    className="rounded-2xl border border-slate-800/80 bg-slate-900/50 p-5 sm:p-6 space-y-2.5 ring-1 ring-white/[0.02]"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700">
-                      <Icon className="h-5 w-5" />
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-800 text-cyan-400 border border-slate-700">
+                      <Icon className="h-4.5 w-4.5" />
                     </div>
-                    <h4 className="font-bold text-white text-base">{uc.title}</h4>
+                    <h4 className="font-bold text-white text-sm sm:text-base">{uc.title}</h4>
                     <p className="text-xs text-slate-400 leading-relaxed">{uc.description}</p>
                   </div>
                 );
@@ -278,9 +284,9 @@ export default function LandingPage() {
         </section>
 
         {/* FAQ Accordion Section */}
-        <section id="faq" className="border-t border-slate-900 bg-slate-950 py-24 px-6">
+        <section id="faq" className="border-t border-slate-900 bg-slate-950 py-20 sm:py-24 px-6">
           <div className="mx-auto max-w-4xl">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-14">
               <h2 className="text-xs font-mono font-semibold uppercase tracking-widest text-cyan-400 mb-2">
                 FREQUENTLY ASKED QUESTIONS
               </h2>
@@ -289,17 +295,17 @@ export default function LandingPage() {
               </h3>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3.5">
               {faqs.map((faq, idx) => (
                 <details
                   key={idx}
-                  className="group rounded-2xl border border-slate-800 bg-slate-900/60 p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer"
+                  className="group rounded-xl sm:rounded-2xl border border-slate-800/80 bg-slate-900/50 p-5 sm:p-6 [&_summary::-webkit-details-marker]:hidden cursor-pointer hover:border-slate-700/80 transition-colors"
                 >
-                  <summary className="flex items-center justify-between text-sm sm:text-base font-bold text-white">
+                  <summary className="flex items-center justify-between text-sm sm:text-base font-semibold text-slate-200 group-hover:text-white transition-colors">
                     <span>{faq.q}</span>
-                    <ChevronDown className="h-4 w-4 text-cyan-400 transition-transform group-open:rotate-180" />
+                    <ChevronDown className="h-4 w-4 text-slate-400 group-hover:text-cyan-400 transition-all group-open:rotate-180 flex-shrink-0 ml-4" />
                   </summary>
-                  <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-3">
+                  <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/70 pt-3">
                     {faq.a}
                   </p>
                 </details>
@@ -309,7 +315,7 @@ export default function LandingPage() {
             <div className="mt-8 text-center">
               <Link
                 href="/faq"
-                className="text-xs font-mono text-cyan-400 hover:underline inline-flex items-center gap-1.5"
+                className="text-xs font-mono text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1.5 font-medium"
               >
                 View full knowledge base and all technical questions <ArrowRight className="h-3.5 w-3.5" />
               </Link>
@@ -318,25 +324,25 @@ export default function LandingPage() {
         </section>
 
         {/* Security Guarantee Banner */}
-        <section id="security" className="border-t border-slate-900 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-20 px-6">
-          <div className="mx-auto max-w-4xl rounded-3xl border border-slate-800 bg-slate-900/60 p-8 sm:p-12 backdrop-blur-md">
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
-                <Fingerprint className="h-10 w-10" />
+        <section id="security" className="border-t border-slate-900 bg-slate-950 py-16 sm:py-20 px-6">
+          <div className="mx-auto max-w-4xl rounded-2xl sm:rounded-3xl border border-slate-800/90 bg-slate-900/80 p-7 sm:p-10 ring-1 ring-white/[0.04]">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 sm:gap-8">
+              <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-2xl bg-slate-800 text-cyan-400 border border-slate-700">
+                <Fingerprint className="h-8 w-8" />
               </div>
               <div>
-                <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest font-semibold">
+                <span className="text-[11px] font-mono text-cyan-400 uppercase tracking-widest font-semibold">
                   PRIVACY-BY-DESIGN GUARANTEE
                 </span>
-                <h3 className="text-2xl font-bold text-white mt-1">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mt-1">
                   Zero Raw IP Logging. Enterprise Cryptography.
                 </h3>
-                <p className="mt-2 text-sm text-slate-300 leading-relaxed mb-3">
+                <p className="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
                   Scan telemetry is aggregated using cryptographic daily salted hashes. Viewer passwords are never stored in plaintext, and our server-side resolver prevents token enumeration and automated scraping.
                 </p>
                 <Link
                   href="/security"
-                  className="text-xs font-mono text-cyan-400 hover:underline inline-flex items-center gap-1.5"
+                  className="text-xs font-mono text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1.5 font-medium"
                 >
                   Explore Security Architecture <ArrowRight className="h-3.5 w-3.5" />
                 </Link>

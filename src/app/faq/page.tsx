@@ -119,13 +119,13 @@ export default function FaqPage() {
 
           {/* Hero Header */}
           <header className="py-8 text-center max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-mono font-medium text-cyan-300">
-              <HelpCircle className="h-3.5 w-3.5" />
-              <span>DIRECT-ANSWER KNOWLEDGE REPOSITORY</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/90 px-3.5 py-1 text-[11px] font-mono font-medium text-slate-300 ring-1 ring-white/[0.04]">
+              <HelpCircle className="h-3.5 w-3.5 text-cyan-400" />
+              <span className="text-cyan-300">DIRECT-ANSWER KNOWLEDGE REPOSITORY</span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
               Knowledge Base & <br />
-              <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent">
                 Frequently Asked Questions
               </span>
             </h1>
@@ -135,24 +135,24 @@ export default function FaqPage() {
           </header>
 
           {/* Grouped FAQs */}
-          <div className="my-12 space-y-12">
+          <div className="my-10 sm:my-14 space-y-10 sm:space-y-12">
             {ALL_FAQS.map((categoryGroup, groupIdx) => (
-              <section key={groupIdx} className="space-y-6">
-                <h2 className="text-xs font-mono font-semibold uppercase tracking-widest text-cyan-400 border-b border-slate-900 pb-3">
+              <section key={groupIdx} className="space-y-4 sm:space-y-5">
+                <h2 className="text-xs font-mono font-semibold uppercase tracking-widest text-cyan-400 border-b border-slate-800/80 pb-2.5">
                   {categoryGroup.category}
                 </h2>
 
-                <div className="space-y-4">
+                <div className="space-y-3.5">
                   {categoryGroup.items.map((faq, idx) => (
                     <article
                       key={idx}
-                      className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-2 hover:border-slate-700 transition-colors"
+                      className="rounded-xl sm:rounded-2xl border border-slate-800/80 bg-slate-900/50 p-5 sm:p-6 space-y-2 hover:border-slate-700/80 transition-colors ring-1 ring-white/[0.02]"
                     >
-                      <h3 className="text-base font-bold text-white flex items-start gap-2">
-                        <span className="text-cyan-400 font-mono text-xs mt-1">Q:</span>
+                      <h3 className="text-sm sm:text-base font-bold text-white flex items-start gap-2">
+                        <span className="text-cyan-400 font-mono text-xs mt-0.5 font-bold">Q:</span>
                         <span>{faq.q}</span>
                       </h3>
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-5 border-l border-cyan-500/30 ml-2 mt-2">
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-4 border-l border-cyan-500/30 ml-1.5 mt-2">
                         {faq.a}
                       </p>
                     </article>
@@ -163,41 +163,41 @@ export default function FaqPage() {
           </div>
 
           {/* Quick Capability Links */}
-          <section className="my-16 rounded-3xl border border-slate-800 bg-slate-900/40 p-8">
-            <h2 className="text-xl font-bold text-white mb-6">Explore Detailed Capabilities</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <section className="my-14 rounded-2xl border border-slate-800/90 bg-slate-900/70 p-6 sm:p-8 ring-1 ring-white/[0.04]">
+            <h2 className="text-lg sm:text-xl font-bold text-white mb-5">Explore Detailed Capabilities</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-4">
               <Link
                 href="/dynamic-qr"
-                className="rounded-xl border border-slate-800 bg-slate-900/80 p-4 hover:border-cyan-500/40 hover:bg-slate-800/80 transition-all group"
+                className="rounded-xl border border-slate-800/80 bg-slate-950/60 p-4 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all group"
               >
-                <span className="text-xs font-bold text-white group-hover:text-cyan-400 block mb-1">
+                <span className="text-xs font-bold text-white group-hover:text-cyan-300 block mb-1">
                   Dynamic QR Codes →
                 </span>
                 <span className="text-[11px] text-slate-400">Pointer mutation mechanics</span>
               </Link>
               <Link
                 href="/pdf-qr"
-                className="rounded-xl border border-slate-800 bg-slate-900/80 p-4 hover:border-cyan-500/40 hover:bg-slate-800/80 transition-all group"
+                className="rounded-xl border border-slate-800/80 bg-slate-950/60 p-4 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all group"
               >
-                <span className="text-xs font-bold text-white group-hover:text-cyan-400 block mb-1">
+                <span className="text-xs font-bold text-white group-hover:text-cyan-300 block mb-1">
                   PDF Sharing →
                 </span>
                 <span className="text-[11px] text-slate-400">Zero-app document viewer</span>
               </Link>
               <Link
                 href="/image-qr"
-                className="rounded-xl border border-slate-800 bg-slate-900/80 p-4 hover:border-cyan-500/40 hover:bg-slate-800/80 transition-all group"
+                className="rounded-xl border border-slate-800/80 bg-slate-950/60 p-4 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all group"
               >
-                <span className="text-xs font-bold text-white group-hover:text-cyan-400 block mb-1">
+                <span className="text-xs font-bold text-white group-hover:text-cyan-300 block mb-1">
                   Image Galleries →
                 </span>
                 <span className="text-[11px] text-slate-400">High-res multi-photo portals</span>
               </Link>
               <Link
                 href="/security"
-                className="rounded-xl border border-slate-800 bg-slate-900/80 p-4 hover:border-cyan-500/40 hover:bg-slate-800/80 transition-all group"
+                className="rounded-xl border border-slate-800/80 bg-slate-950/60 p-4 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all group"
               >
-                <span className="text-xs font-bold text-white group-hover:text-cyan-400 block mb-1">
+                <span className="text-xs font-bold text-white group-hover:text-cyan-300 block mb-1">
                   Security & Privacy →
                 </span>
                 <span className="text-[11px] text-slate-400">Argon2id & zero raw IP</span>
@@ -206,8 +206,8 @@ export default function FaqPage() {
           </section>
 
           {/* CTA Banner */}
-          <section className="my-16 rounded-3xl border border-cyan-500/30 bg-gradient-to-r from-slate-900 via-cyan-950/40 to-slate-900 p-8 sm:p-12 text-center space-y-4">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+          <section className="my-14 rounded-2xl border border-slate-800/90 bg-slate-900/80 p-7 sm:p-10 text-center space-y-3.5 ring-1 ring-white/[0.04]">
+            <h2 className="text-xl sm:text-2xl font-bold text-white">
               Ready to Create Your Dynamic QR Code?
             </h2>
             <p className="text-slate-300 text-xs sm:text-sm max-w-lg mx-auto">
@@ -216,9 +216,9 @@ export default function FaqPage() {
             <div className="pt-2">
               <Link
                 href="/signup"
-                className="rounded-xl bg-cyan-500 px-8 py-3.5 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-xl shadow-cyan-500/25 transition-all inline-flex items-center gap-2"
+                className="rounded-xl bg-cyan-500 px-7 py-3 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-md shadow-cyan-500/20 transition-all inline-flex items-center gap-2"
               >
-                Get Started Free <ArrowRight className="h-4 w-4" />
+                Get Started Free <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </section>

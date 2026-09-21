@@ -73,13 +73,13 @@ export default function SecurityPage() {
 
           {/* Hero Header */}
           <header className="py-8 text-center max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-mono font-medium text-cyan-300">
-              <ShieldCheck className="h-3.5 w-3.5" />
-              <span>PRIVACY-BY-DESIGN ARCHITECTURE</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/90 px-3.5 py-1 text-[11px] font-mono font-medium text-slate-300 ring-1 ring-white/[0.04]">
+              <ShieldCheck className="h-3.5 w-3.5 text-cyan-400" />
+              <span className="text-cyan-300">PRIVACY-BY-DESIGN ARCHITECTURE</span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
               Enterprise Security & <br />
-              <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent">
                 Privacy-First Telemetry
               </span>
             </h1>
@@ -89,13 +89,13 @@ export default function SecurityPage() {
             <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/signup"
-                className="rounded-xl bg-cyan-500 px-6 py-3 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-lg shadow-cyan-500/20 transition-all active:scale-[0.98] inline-flex items-center gap-2"
+                className="rounded-xl bg-cyan-500 px-6 py-2.5 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-md shadow-cyan-500/20 transition-all active:scale-[0.98] inline-flex items-center gap-2"
               >
                 Create Protected QR Code <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link
                 href="/legal/privacy"
-                className="rounded-xl border border-slate-800 bg-slate-900/80 px-5 py-3 text-xs font-semibold text-slate-300 hover:bg-slate-800 transition-colors"
+                className="rounded-xl border border-slate-800 bg-slate-900/90 px-5 py-2.5 text-xs font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition-colors"
               >
                 Read Privacy Policy
               </Link>
@@ -103,42 +103,42 @@ export default function SecurityPage() {
           </header>
 
           {/* 4 Pillars of QRAZEN Security */}
-          <section className="my-16 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8 space-y-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                <Lock className="h-6 w-6" />
+          <section className="my-14 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 sm:p-7 space-y-3 ring-1 ring-white/[0.02]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80">
+                <Lock className="h-5 w-5" />
               </div>
-              <h2 className="text-xl font-bold text-white">Argon2id Password Protection</h2>
+              <h2 className="text-base sm:text-lg font-bold text-white">Argon2id Password Protection</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Access to protected files is gated on our servers. The unlock hash is derived using Argon2id / Scrypt, preventing offline dictionary attacks and brute-force token harvesting with built-in rate-limiting.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8 space-y-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                <Fingerprint className="h-6 w-6" />
+            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 sm:p-7 space-y-3 ring-1 ring-white/[0.02]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80">
+                <Fingerprint className="h-5 w-5" />
               </div>
-              <h2 className="text-xl font-bold text-white">Zero Raw IP Address Storage</h2>
+              <h2 className="text-base sm:text-lg font-bold text-white">Zero Raw IP Address Storage</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Unlike ad-tech QR trackers, QRAZEN never stores raw visitor IP addresses. Scan counts use a rotating daily salted hash that automatically expires, guaranteeing viewer privacy and GDPR compliance.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8 space-y-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                <Clock className="h-6 w-6" />
+            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 sm:p-7 space-y-3 ring-1 ring-white/[0.02]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80">
+                <Clock className="h-5 w-5" />
               </div>
-              <h2 className="text-xl font-bold text-white">Automated Lifespan & Expiration</h2>
+              <h2 className="text-base sm:text-lg font-bold text-white">Automated Lifespan & Expiration</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Set explicit access windows for sensitive pitch decks, event tickets, or time-sensitive collateral. Once the threshold passes, access is severed instantly at the server resolver.
               </p>
             </div>
 
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8 space-y-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                <Eye className="h-6 w-6" />
+            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 sm:p-7 space-y-3 ring-1 ring-white/[0.02]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80">
+                <Eye className="h-5 w-5" />
               </div>
-              <h2 className="text-xl font-bold text-white">View-Only Sandboxed Isolation</h2>
+              <h2 className="text-base sm:text-lg font-bold text-white">View-Only Sandboxed Isolation</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Render documents, text, and photos in sandboxed mobile frames that suppress one-click binary download triggers, reducing unauthorized redistribution of proprietary assets.
               </p>
@@ -146,15 +146,15 @@ export default function SecurityPage() {
           </section>
 
           {/* FAQ Section */}
-          <section className="my-16 space-y-6">
-            <h2 className="text-2xl font-bold text-white tracking-tight">
+          <section className="my-14 space-y-5">
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Frequently Asked Questions About Security & Privacy
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-3.5">
               {FAQS.map((faq, index) => (
                 <div
                   key={index}
-                  className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-2"
+                  className="rounded-xl sm:rounded-2xl border border-slate-800/80 bg-slate-900/50 p-5 sm:p-6 space-y-2"
                 >
                   <h3 className="text-white font-bold text-sm sm:text-base">{faq.q}</h3>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{faq.a}</p>
@@ -164,8 +164,8 @@ export default function SecurityPage() {
           </section>
 
           {/* CTA Banner */}
-          <section className="my-16 rounded-3xl border border-cyan-500/30 bg-gradient-to-r from-slate-900 via-cyan-950/40 to-slate-900 p-8 sm:p-12 text-center space-y-4">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+          <section className="my-14 rounded-2xl border border-slate-800/90 bg-slate-900/80 p-7 sm:p-10 text-center space-y-3.5 ring-1 ring-white/[0.04]">
+            <h2 className="text-xl sm:text-2xl font-bold text-white">
               Secure Your Digital Distribution
             </h2>
             <p className="text-slate-300 text-xs sm:text-sm max-w-lg mx-auto">
@@ -174,9 +174,9 @@ export default function SecurityPage() {
             <div className="pt-2">
               <Link
                 href="/signup"
-                className="rounded-xl bg-cyan-500 px-8 py-3.5 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-xl shadow-cyan-500/25 transition-all inline-flex items-center gap-2"
+                className="rounded-xl bg-cyan-500 px-7 py-3 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-md shadow-cyan-500/20 transition-all inline-flex items-center gap-2"
               >
-                Create Protected Portal <ArrowRight className="h-4 w-4" />
+                Create Protected Portal <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </section>

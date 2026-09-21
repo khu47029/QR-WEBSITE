@@ -192,7 +192,7 @@ function ViewerShell({
 function ExpiredPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4 text-center">
-      <div className="max-w-md rounded-3xl border border-slate-800 bg-slate-900/90 p-8 shadow-2xl backdrop-blur-xl">
+      <div className="max-w-md rounded-2xl border border-slate-800/90 bg-slate-900/90 p-7 sm:p-8 shadow-2xl shadow-slate-950/80 ring-1 ring-white/[0.04]">
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400">
           <Clock className="h-8 w-8" />
         </div>
@@ -213,7 +213,7 @@ function ExpiredPage() {
 function RemovedPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4 text-center">
-      <div className="max-w-md rounded-3xl border border-slate-800 bg-slate-900/90 p-8 shadow-2xl backdrop-blur-xl">
+      <div className="max-w-md rounded-2xl border border-slate-800/90 bg-slate-900/90 p-7 sm:p-8 shadow-2xl shadow-slate-950/80 ring-1 ring-white/[0.04]">
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-500/10 border border-red-500/30 text-red-400">
           <Trash2 className="h-8 w-8" />
         </div>
@@ -234,7 +234,7 @@ function RemovedPage() {
 function DisabledPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4 text-center">
-      <div className="max-w-md rounded-3xl border border-slate-800 bg-slate-900/90 p-8 shadow-2xl backdrop-blur-xl">
+      <div className="max-w-md rounded-2xl border border-slate-800/90 bg-slate-900/90 p-7 sm:p-8 shadow-2xl shadow-slate-950/80 ring-1 ring-white/[0.04]">
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-800 text-slate-400 border border-slate-700">
           <PowerOff className="h-8 w-8" />
         </div>
@@ -255,7 +255,7 @@ function DisabledPage() {
 function NoContentPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4 text-center">
-      <div className="max-w-md rounded-3xl border border-slate-800 bg-slate-900/90 p-8 shadow-2xl backdrop-blur-xl">
+      <div className="max-w-md rounded-2xl border border-slate-800/90 bg-slate-900/90 p-7 sm:p-8 shadow-2xl shadow-slate-950/80 ring-1 ring-white/[0.04]">
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
           <Sparkles className="h-8 w-8" />
         </div>

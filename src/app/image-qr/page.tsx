@@ -72,13 +72,13 @@ export default function ImageQrPage() {
 
           {/* Hero Header */}
           <header className="py-8 text-center max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-mono font-medium text-cyan-300">
-              <ImageIcon className="h-3.5 w-3.5" />
-              <span>VISUAL ASSET GATEWAY</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/90 px-3.5 py-1 text-[11px] font-mono font-medium text-slate-300 ring-1 ring-white/[0.04]">
+              <ImageIcon className="h-3.5 w-3.5 text-cyan-400" />
+              <span className="text-cyan-300">VISUAL ASSET GATEWAY</span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
               Image QR Codes: <br />
-              <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent">
                 Photo Galleries Behind One Scannable Code
               </span>
             </h1>
@@ -88,13 +88,13 @@ export default function ImageQrPage() {
             <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/signup"
-                className="rounded-xl bg-cyan-500 px-6 py-3 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-lg shadow-cyan-500/20 transition-all active:scale-[0.98] inline-flex items-center gap-2"
+                className="rounded-xl bg-cyan-500 px-6 py-2.5 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-md shadow-cyan-500/20 transition-all active:scale-[0.98] inline-flex items-center gap-2"
               >
                 Create Image QR <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link
                 href="/multi-file-qr"
-                className="rounded-xl border border-slate-800 bg-slate-900/80 px-5 py-3 text-xs font-semibold text-slate-300 hover:bg-slate-800 transition-colors"
+                className="rounded-xl border border-slate-800 bg-slate-900/90 px-5 py-2.5 text-xs font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition-colors"
               >
                 Explore Multi-Asset Bundles
               </Link>
@@ -102,48 +102,48 @@ export default function ImageQrPage() {
           </header>
 
           {/* Feature Pillars */}
-          <section className="my-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+          <section className="my-14 grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 space-y-3 ring-1 ring-white/[0.02]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80">
                 <Layers className="h-5 w-5" />
               </div>
-              <h2 className="text-lg font-bold text-white">Unified Multi-Image Feed</h2>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h2 className="text-base sm:text-lg font-bold text-white">Unified Multi-Image Feed</h2>
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Group multiple photos into one cohesive mobile gallery with touch-friendly navigation and full-screen lightbox.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 space-y-3 ring-1 ring-white/[0.02]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80">
                 <Camera className="h-5 w-5" />
               </div>
-              <h2 className="text-lg font-bold text-white">High-Res Preservation</h2>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h2 className="text-base sm:text-lg font-bold text-white">High-Res Preservation</h2>
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Maintains crisp visual fidelity without aggressive lossy compression. Perfect for photographers and creative agencies.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 space-y-3 ring-1 ring-white/[0.02]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80">
                 <Eye className="h-5 w-5" />
               </div>
-              <h2 className="text-lg font-bold text-white">View-Only Protection</h2>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h2 className="text-base sm:text-lg font-bold text-white">View-Only Protection</h2>
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Enable view-only mode to remove easy direct-download triggers and protect your visual work.
               </p>
             </div>
           </section>
 
           {/* FAQ Section */}
-          <section className="my-16 space-y-6">
-            <h2 className="text-2xl font-bold text-white tracking-tight">
+          <section className="my-14 space-y-5">
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Frequently Asked Questions About Image QR Codes
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-3.5">
               {FAQS.map((faq, index) => (
                 <div
                   key={index}
-                  className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-2"
+                  className="rounded-xl sm:rounded-2xl border border-slate-800/80 bg-slate-900/50 p-5 sm:p-6 space-y-2"
                 >
                   <h3 className="text-white font-bold text-sm sm:text-base">{faq.q}</h3>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{faq.a}</p>
@@ -153,8 +153,8 @@ export default function ImageQrPage() {
           </section>
 
           {/* CTA Banner */}
-          <section className="my-16 rounded-3xl border border-cyan-500/30 bg-gradient-to-r from-slate-900 via-cyan-950/40 to-slate-900 p-8 sm:p-12 text-center space-y-4">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+          <section className="my-14 rounded-2xl border border-slate-800/90 bg-slate-900/80 p-7 sm:p-10 text-center space-y-3.5 ring-1 ring-white/[0.04]">
+            <h2 className="text-xl sm:text-2xl font-bold text-white">
               Mint Your Dynamic Image QR Code
             </h2>
             <p className="text-slate-300 text-xs sm:text-sm max-w-lg mx-auto">
@@ -163,9 +163,9 @@ export default function ImageQrPage() {
             <div className="pt-2">
               <Link
                 href="/signup"
-                className="rounded-xl bg-cyan-500 px-8 py-3.5 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-xl shadow-cyan-500/25 transition-all inline-flex items-center gap-2"
+                className="rounded-xl bg-cyan-500 px-7 py-3 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-md shadow-cyan-500/20 transition-all inline-flex items-center gap-2"
               >
-                Create Free Image QR <ArrowRight className="h-4 w-4" />
+                Create Free Image QR <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </section>

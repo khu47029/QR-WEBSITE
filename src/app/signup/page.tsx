@@ -62,7 +62,7 @@ export default function SignupPage() {
           </p>
         </div>
 
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/90 p-8 shadow-2xl backdrop-blur-xl">
+        <div className="rounded-2xl border border-slate-800/90 bg-slate-900/90 p-7 sm:p-8 shadow-2xl shadow-slate-950/80 ring-1 ring-white/[0.04]">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-1.5">
               <label htmlFor="name" className="block text-xs font-mono uppercase text-slate-400">

@@ -74,13 +74,13 @@ export default function PdfQrPage() {
 
           {/* Hero Header */}
           <header className="py-8 text-center max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-mono font-medium text-cyan-300">
-              <FileText className="h-3.5 w-3.5" />
-              <span>DYNAMIC DOCUMENT DISTRIBUTION</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/90 px-3.5 py-1 text-[11px] font-mono font-medium text-slate-300 ring-1 ring-white/[0.04]">
+              <FileText className="h-3.5 w-3.5 text-cyan-400" />
+              <span className="text-cyan-300">DYNAMIC DOCUMENT DISTRIBUTION</span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
               PDF QR Codes: <br />
-              <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400 bg-clip-text text-transparent">
                 Instant Mobile Document Access
               </span>
             </h1>
@@ -90,13 +90,13 @@ export default function PdfQrPage() {
             <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/signup"
-                className="rounded-xl bg-cyan-500 px-6 py-3 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-lg shadow-cyan-500/20 transition-all active:scale-[0.98] inline-flex items-center gap-2"
+                className="rounded-xl bg-cyan-500 px-6 py-2.5 text-xs font-bold text-slate-950 hover:bg-cyan-400 shadow-md shadow-cyan-500/20 transition-all active:scale-[0.98] inline-flex items-center gap-2"
               >
                 Upload PDF & Generate QR <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link
                 href="/security"
-                className="rounded-xl border border-slate-800 bg-slate-900/80 px-5 py-3 text-xs font-semibold text-slate-300 hover:bg-slate-800 transition-colors"
+                className="rounded-xl border border-slate-800 bg-slate-900/90 px-5 py-2.5 text-xs font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition-colors"
               >
                 View Password & Privacy Controls
               </Link>
@@ -104,73 +104,73 @@ export default function PdfQrPage() {
           </header>
 
           {/* Key Capabilities Grid */}
-          <section className="my-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+          <section className="my-14 grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 space-y-3 ring-1 ring-white/[0.02]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80">
                 <RefreshCw className="h-5 w-5" />
               </div>
-              <h2 className="text-lg font-bold text-white">Live PDF Revision Swapping</h2>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h2 className="text-base sm:text-lg font-bold text-white">Live PDF Revision Swapping</h2>
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Publish new price lists or corrections in seconds. The printed QR matrix remains 100% unchanged on physical media.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 space-y-3 ring-1 ring-white/[0.02]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80">
                 <Smartphone className="h-5 w-5" />
               </div>
-              <h2 className="text-lg font-bold text-white">Zero-App Mobile Rendering</h2>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h2 className="text-base sm:text-lg font-bold text-white">Zero-App Mobile Rendering</h2>
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Viewers scan with their default iOS or Android camera and read documents immediately inside a clean web viewer.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+            <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 space-y-3 ring-1 ring-white/[0.02]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80">
                 <Lock className="h-5 w-5" />
               </div>
-              <h2 className="text-lg font-bold text-white">Argon2id Password Protection</h2>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <h2 className="text-base sm:text-lg font-bold text-white">Argon2id Password Protection</h2>
+              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Gate sensitive financial reports, legal memos, or confidential board materials behind cryptographic unlock keys.
               </p>
             </div>
           </section>
 
-          {/* How-To Step Guide (High Search Intent / GEO) */}
-          <section className="my-16 rounded-3xl border border-slate-800 bg-slate-900/40 p-8 sm:p-10 space-y-6">
-            <h2 className="text-2xl font-bold text-white tracking-tight">
+          {/* How-To Step Pipeline */}
+          <section className="my-14 rounded-2xl border border-slate-800/90 bg-slate-900/70 p-6 sm:p-9 space-y-6 ring-1 ring-white/[0.04]">
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               How to Create a Dynamic PDF QR Code in 3 Steps
             </h2>
             <div className="space-y-4">
-              <div className="flex gap-4 items-start">
+              <div className="flex gap-4 items-start rounded-xl border border-slate-800/80 bg-slate-950/60 p-4 sm:p-5">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500 text-slate-950 font-mono font-bold text-xs flex-shrink-0">
-                  1
+                  01
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-white">Upload Your Document</h3>
-                  <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed">
                     Upload your PDF directly to your secure workstation. Magic bytes are verified automatically on upload.
                   </p>
                 </div>
               </div>
-              <div className="flex gap-4 items-start">
+              <div className="flex gap-4 items-start rounded-xl border border-slate-800/80 bg-slate-950/60 p-4 sm:p-5">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500 text-slate-950 font-mono font-bold text-xs flex-shrink-0">
-                  2
+                  02
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-white">Configure Access Controls</h3>
-                  <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed">
                     Optionally set a viewer password, enable view-only mode, or configure an automated expiration date.
                   </p>
                 </div>
               </div>
-              <div className="flex gap-4 items-start">
+              <div className="flex gap-4 items-start rounded-xl border border-slate-800/80 bg-slate-950/60 p-4 sm:p-5">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-500 text-slate-950 font-mono font-bold text-xs flex-shrink-0">
-                  3
+                  03
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-white">Export & Print Vector Matrix</h3>
-                  <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed">
                     Download crisp PNG/SVG vectors ready for print on signage, packaging, table stands, or product labels.
                   </p>
                 </div>
@@ -179,15 +179,15 @@ export default function PdfQrPage() {
           </section>
 
           {/* FAQ Section */}
-          <section className="my-16 space-y-6">
-            <h2 className="text-2xl font-bold text-white tracking-tight">
+          <section className="my-14 space-y-5">
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Frequently Asked Questions About PDF QR Codes
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-3.5">
               {FAQS.map((faq, index) => (
                 <div
                   key={index}
-                  className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 space-y-2"
+                  className="rounded-xl sm:rounded-2xl border border-slate-800/80 bg-slate-900/50 p-5 sm:p-6 space-y-2"
                 >
                   <h3 className="text-white font-bold text-sm sm:text-base">{faq.q}</h3>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">{faq.a}</p>
