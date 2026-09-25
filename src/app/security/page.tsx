@@ -103,14 +103,14 @@ export default function SecurityPage() {
           </header>
 
           {/* 4 Pillars of QRAZEN Security */}
-          <section className="my-14 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+          <section id="features" className="my-14 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
             <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 sm:p-7 space-y-3 ring-1 ring-white/[0.02]">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80">
                 <Lock className="h-5 w-5" />
               </div>
               <h2 className="text-base sm:text-lg font-bold text-white">Argon2id Password Protection</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Access to protected files is gated on our servers. The unlock hash is derived using Argon2id / Scrypt, preventing offline dictionary attacks and brute-force token harvesting with built-in rate-limiting.
+                Access to protected files is gated on our servers. The unlock hash is derived using Argon2id / Scrypt, preventing offline dictionary attacks. Works seamlessly across <Link href="/pdf-qr" className="text-cyan-400 hover:underline">PDFs</Link>, galleries, and bundles.
               </p>
             </div>
 
@@ -130,7 +130,8 @@ export default function SecurityPage() {
               </div>
               <h2 className="text-base sm:text-lg font-bold text-white">Automated Lifespan & Expiration</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Set explicit access windows for sensitive pitch decks, event tickets, or time-sensitive collateral. Once the threshold passes, access is severed instantly at the server resolver.
+                Set explicit access windows for sensitive pitch decks or event tickets. Once the threshold passes, access is severed instantly at the{" "}
+                <Link href="/dynamic-qr" className="text-cyan-400 hover:underline">dynamic server resolver</Link>.
               </p>
             </div>
 
@@ -140,13 +141,13 @@ export default function SecurityPage() {
               </div>
               <h2 className="text-base sm:text-lg font-bold text-white">View-Only Sandboxed Isolation</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Render documents, text, and photos in sandboxed mobile frames that suppress one-click binary download triggers, reducing unauthorized redistribution of proprietary assets.
+                Render documents and <Link href="/multi-file-qr" className="text-cyan-400 hover:underline">multi-file asset bundles</Link> in sandboxed mobile frames that suppress one-click binary download triggers, reducing unauthorized redistribution of proprietary assets.
               </p>
             </div>
           </section>
 
           {/* FAQ Section */}
-          <section className="my-14 space-y-5">
+          <section id="faq" className="my-14 space-y-5">
             <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Frequently Asked Questions About Security & Privacy
             </h2>

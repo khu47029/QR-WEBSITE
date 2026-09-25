@@ -131,3 +131,39 @@ export function buildWebPageSchema({
     "inLanguage": "en-US",
   };
 }
+
+/**
+ * Generates Article schema for educational and technical guides.
+ */
+export function buildArticleSchema({
+  headline,
+  description,
+  path,
+}: {
+  headline: string;
+  description: string;
+  path: string;
+}) {
+  const baseUrl = getBaseUrl();
+  const url = `${baseUrl}${path.startsWith("/") ? path : `/${path}`}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${url}#article`,
+    "url": url,
+    "headline": headline,
+    "description": description,
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@id": `${baseUrl}/#website`,
+    },
+    "author": {
+      "@id": `${baseUrl}/#organization`,
+    },
+    "publisher": {
+      "@id": `${baseUrl}/#organization`,
+    },
+    "mainEntityOfPage": url,
+  };
+}

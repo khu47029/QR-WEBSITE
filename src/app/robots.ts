@@ -16,6 +16,8 @@ export default function robots(): MetadataRoute.Robots {
           "/multi-file-qr",
           "/security",
           "/faq",
+          "/learn",
+          "/learn/*",
           "/legal/aup",
           "/legal/privacy",
         ],

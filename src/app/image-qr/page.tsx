@@ -102,14 +102,15 @@ export default function ImageQrPage() {
           </header>
 
           {/* Feature Pillars */}
-          <section className="my-14 grid grid-cols-1 md:grid-cols-3 gap-5">
+          <section id="features" className="my-14 grid grid-cols-1 md:grid-cols-3 gap-5">
             <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 space-y-3 ring-1 ring-white/[0.02]">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80">
                 <Layers className="h-5 w-5" />
               </div>
               <h2 className="text-base sm:text-lg font-bold text-white">Unified Multi-Image Feed</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Group multiple photos into one cohesive mobile gallery with touch-friendly navigation and full-screen lightbox.
+                Group multiple photos into one cohesive mobile gallery with touch-friendly navigation. For mixed media (photos + PDFs), see{" "}
+                <Link href="/multi-file-qr" className="text-cyan-400 hover:underline">multi-file bundles</Link>.
               </p>
             </div>
 
@@ -119,7 +120,10 @@ export default function ImageQrPage() {
               </div>
               <h2 className="text-base sm:text-lg font-bold text-white">High-Res Preservation</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Maintains crisp visual fidelity without aggressive lossy compression. Perfect for photographers and creative agencies.
+                Maintains crisp visual fidelity without aggressive lossy compression. Update images anytime via{" "}
+                <Link href="/dynamic-qr" className="text-cyan-400 hover:underline">dynamic pointer rotation</Link>, and review our{" "}
+                <Link href="/learn/qr-code-error-correction" className="text-cyan-400 hover:underline">error correction</Link> and{" "}
+                <Link href="/learn/qr-code-print-size-guide" className="text-cyan-400 hover:underline">print sizing guides</Link> for optimal scanning.
               </p>
             </div>
 
@@ -129,13 +133,14 @@ export default function ImageQrPage() {
               </div>
               <h2 className="text-base sm:text-lg font-bold text-white">View-Only Protection</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Enable view-only mode to remove easy direct-download triggers and protect your visual work.
+                Enable view-only mode and enforce{" "}
+                <Link href="/security" className="text-cyan-400 hover:underline">Argon2id password gates</Link> to deter unauthorized redistribution of visual assets.
               </p>
             </div>
           </section>
 
           {/* FAQ Section */}
-          <section className="my-14 space-y-5">
+          <section id="faq" className="my-14 space-y-5">
             <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Frequently Asked Questions About Image QR Codes
             </h2>

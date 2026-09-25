@@ -102,14 +102,14 @@ export default function MultiFileQrPage() {
           </header>
 
           {/* Core Feature Grid */}
-          <section className="my-14 grid grid-cols-1 md:grid-cols-3 gap-5">
+          <section id="features" className="my-14 grid grid-cols-1 md:grid-cols-3 gap-5">
             <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 space-y-3 ring-1 ring-white/[0.02]">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80">
                 <Package className="h-5 w-5" />
               </div>
               <h2 className="text-base sm:text-lg font-bold text-white">Unified Asset Portal</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Combine PDFs, photos, vectors, and notes into an organized, mobile-first gallery with individual item previews.
+                Combine <Link href="/pdf-qr" className="text-cyan-400 hover:underline">PDF documents</Link>, <Link href="/image-qr" className="text-cyan-400 hover:underline">photo galleries</Link>, and notes into an organized mobile-first portal with individual item previews. Read our step-by-step guide on <Link href="/learn/multiple-files-qr-code" className="text-cyan-400 hover:underline">linking multiple files to one QR code</Link>.
               </p>
             </div>
 
@@ -119,7 +119,8 @@ export default function MultiFileQrPage() {
               </div>
               <h2 className="text-base sm:text-lg font-bold text-white">ZIP Manifest Inspection</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Smart central directory parsing displays archive file lists and metadata directly in the viewer shell.
+                Smart central directory parsing displays archive file hierarchies directly in the browser. Update contents anytime via{" "}
+                <Link href="/dynamic-qr" className="text-cyan-400 hover:underline">dynamic pointer updates</Link>.
               </p>
             </div>
 
@@ -129,13 +130,14 @@ export default function MultiFileQrPage() {
               </div>
               <h2 className="text-base sm:text-lg font-bold text-white">Magic Byte Verification</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Every binary is validated against strict magic byte signatures to prevent malicious mime spoofing.
+                Every binary is validated against strict magic byte signatures. Add optional{" "}
+                <Link href="/security" className="text-cyan-400 hover:underline">Argon2id password gating</Link> for sensitive archives.
               </p>
             </div>
           </section>
 
           {/* FAQ Section */}
-          <section className="my-14 space-y-5">
+          <section id="faq" className="my-14 space-y-5">
             <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Frequently Asked Questions About Multi-File QR Codes
             </h2>

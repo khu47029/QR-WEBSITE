@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { ArrowLeft, Lock } from "lucide-react";
+import { QrazenLogo } from "@/components/brand/qrazen-logo";
+import { buildWebPageSchema } from "@/lib/seo/schema";
+import { JsonLd } from "@/components/seo/json-ld";
 
 export const metadata = {
   title: "Privacy Policy",
@@ -9,8 +12,15 @@ export const metadata = {
 const LAST_UPDATED = "September 2, 2026";
 
 export default function PrivacyPage() {
+  const pageSchema = buildWebPageSchema({
+    title: "Privacy Policy",
+    description: "Privacy-by-design standards: zero raw IP logging, rotating salted hashes, and strict encryption.",
+    path: "/legal/privacy",
+  });
+
   return (
     <LegalShell title="Privacy Policy" updated={LAST_UPDATED}>
+      <JsonLd schema={pageSchema} />
       <p>
         This policy explains how QR Content Gateway (the “Service”) processes and protects information. The Service is architected under strict <strong>Privacy-by-Design</strong> principles: we collect only what is strictly required to route access tokens, and our scan analytics cannot be used to identify or track individual human beings.
       </p>
@@ -64,11 +74,8 @@ function LegalShell({
     <main className="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-200">
       <nav className="border-b border-slate-900 px-6 py-4">
         <div className="mx-auto flex max-w-4xl items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-slate-950 font-black text-xs shadow-md shadow-cyan-500/20">
-              QR
-            </div>
-            <span className="font-bold text-white text-sm tracking-tight">QR Content Gateway</span>
+          <Link href="/" className="inline-flex">
+            <QrazenLogo size="sm" subtitle="PRIVACY POLICY" />
           </Link>
           <Link href="/" className="inline-flex items-center gap-1 text-xs font-mono text-slate-400 hover:text-cyan-400 transition-colors">
             <ArrowLeft className="h-3.5 w-3.5" /> Home

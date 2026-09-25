@@ -104,14 +104,15 @@ export default function PdfQrPage() {
           </header>
 
           {/* Key Capabilities Grid */}
-          <section className="my-14 grid grid-cols-1 md:grid-cols-3 gap-5">
+          <section id="features" className="my-14 grid grid-cols-1 md:grid-cols-3 gap-5">
             <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-6 space-y-3 ring-1 ring-white/[0.02]">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800 text-cyan-400 border border-slate-700/80">
                 <RefreshCw className="h-5 w-5" />
               </div>
               <h2 className="text-base sm:text-lg font-bold text-white">Live PDF Revision Swapping</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Publish new price lists or corrections in seconds. The printed QR matrix remains 100% unchanged on physical media.
+                Publish new price lists or corrections in seconds. Powered by QRAZEN&apos;s{" "}
+                <Link href="/dynamic-qr" className="text-cyan-400 hover:underline">dynamic QR architecture</Link>, the printed QR matrix remains 100% unchanged on physical media.
               </p>
             </div>
 
@@ -121,7 +122,7 @@ export default function PdfQrPage() {
               </div>
               <h2 className="text-base sm:text-lg font-bold text-white">Zero-App Mobile Rendering</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Viewers scan with their default iOS or Android camera and read documents immediately inside a clean web viewer.
+                Viewers scan with their default iOS or Android camera and read documents immediately inside a clean web viewer without downloading external PDF software.
               </p>
             </div>
 
@@ -131,13 +132,14 @@ export default function PdfQrPage() {
               </div>
               <h2 className="text-base sm:text-lg font-bold text-white">Argon2id Password Protection</h2>
               <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Gate sensitive financial reports, legal memos, or confidential board materials behind cryptographic unlock keys.
+                Gate sensitive financial reports, legal memos, or confidential board materials behind cryptographic unlock keys. Explore full{" "}
+                <Link href="/security" className="text-cyan-400 hover:underline">security and privacy controls</Link>.
               </p>
             </div>
           </section>
 
           {/* How-To Step Pipeline */}
-          <section className="my-14 rounded-2xl border border-slate-800/90 bg-slate-900/70 p-6 sm:p-9 space-y-6 ring-1 ring-white/[0.04]">
+          <section id="how-it-works" className="my-14 rounded-2xl border border-slate-800/90 bg-slate-900/70 p-6 sm:p-9 space-y-6 ring-1 ring-white/[0.04]">
             <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               How to Create a Dynamic PDF QR Code in 3 Steps
             </h2>
@@ -149,7 +151,10 @@ export default function PdfQrPage() {
                 <div>
                   <h3 className="text-sm font-bold text-white">Upload Your Document</h3>
                   <p className="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed">
-                    Upload your PDF directly to your secure workstation. Magic bytes are verified automatically on upload.
+                    Upload your PDF directly to your secure workstation. Magic bytes are verified automatically on upload. Need to bundle several documents? Read our guide on{" "}
+                    <Link href="/learn/multiple-files-qr-code" className="text-cyan-400 hover:underline">linking multiple files to one QR code</Link>{" "}
+                    or create a{" "}
+                    <Link href="/multi-file-qr" className="text-cyan-400 hover:underline">multi-file bundle</Link>.
                   </p>
                 </div>
               </div>
@@ -160,7 +165,7 @@ export default function PdfQrPage() {
                 <div>
                   <h3 className="text-sm font-bold text-white">Configure Access Controls</h3>
                   <p className="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed">
-                    Optionally set a viewer password, enable view-only mode, or configure an automated expiration date.
+                    Optionally set a viewer password, enable view-only mode, or configure an automated expiration date with instant server-side revocation.
                   </p>
                 </div>
               </div>
@@ -171,7 +176,11 @@ export default function PdfQrPage() {
                 <div>
                   <h3 className="text-sm font-bold text-white">Export & Print Vector Matrix</h3>
                   <p className="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed">
-                    Download crisp PNG/SVG vectors ready for print on signage, packaging, table stands, or product labels.
+                    Download crisp PNG/SVG vectors ready for print on signage, packaging, table stands, or product labels. Review our{" "}
+                    <Link href="/learn/qr-code-print-size-guide" className="text-cyan-400 hover:underline">QR code minimum print size guide</Link>{" "}
+                    and{" "}
+                    <Link href="/learn/qr-code-error-correction" className="text-cyan-400 hover:underline">error correction standards</Link>{" "}
+                    for optimal physical scanning reliability.
                   </p>
                 </div>
               </div>
@@ -179,7 +188,7 @@ export default function PdfQrPage() {
           </section>
 
           {/* FAQ Section */}
-          <section className="my-14 space-y-5">
+          <section id="faq" className="my-14 space-y-5">
             <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
               Frequently Asked Questions About PDF QR Codes
             </h2>

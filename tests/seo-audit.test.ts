@@ -150,6 +150,11 @@ describe("QRAZEN Search Intelligence (QSI) — Automated Verification Suite", ()
       expect(urls).toContain("https://qrazen.com/multi-file-qr");
       expect(urls).toContain("https://qrazen.com/security");
       expect(urls).toContain("https://qrazen.com/faq");
+      expect(urls).toContain("https://qrazen.com/learn");
+      expect(urls).toContain("https://qrazen.com/learn/dynamic-vs-static-qr-codes");
+      expect(urls).toContain("https://qrazen.com/learn/qr-code-print-size-guide");
+      expect(urls).toContain("https://qrazen.com/learn/qr-code-error-correction");
+      expect(urls).toContain("https://qrazen.com/learn/multiple-files-qr-code");
 
       // CRITICAL PRIVACY CHECKS: No private/user zones in sitemap!
       expect(urls).not.toContain("https://qrazen.com/login");

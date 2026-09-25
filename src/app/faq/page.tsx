@@ -135,37 +135,40 @@ export default function FaqPage() {
           </header>
 
           {/* Grouped FAQs */}
-          <div className="my-10 sm:my-14 space-y-10 sm:space-y-12">
-            {ALL_FAQS.map((categoryGroup, groupIdx) => (
-              <section key={groupIdx} className="space-y-4 sm:space-y-5">
-                <h2 className="text-xs font-mono font-semibold uppercase tracking-widest text-cyan-400 border-b border-slate-800/80 pb-2.5">
-                  {categoryGroup.category}
-                </h2>
+          <div id="faq-categories" className="my-10 sm:my-14 space-y-10 sm:space-y-12">
+            {ALL_FAQS.map((categoryGroup, groupIdx) => {
+              const categoryId = categoryGroup.category.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+              return (
+                <section key={groupIdx} id={categoryId} className="space-y-4 sm:space-y-5">
+                  <h2 className="text-xs font-mono font-semibold uppercase tracking-widest text-cyan-400 border-b border-slate-800/80 pb-2.5">
+                    {categoryGroup.category}
+                  </h2>
 
-                <div className="space-y-3.5">
-                  {categoryGroup.items.map((faq, idx) => (
-                    <article
-                      key={idx}
-                      className="rounded-xl sm:rounded-2xl border border-slate-800/80 bg-slate-900/50 p-5 sm:p-6 space-y-2 hover:border-slate-700/80 transition-colors ring-1 ring-white/[0.02]"
-                    >
-                      <h3 className="text-sm sm:text-base font-bold text-white flex items-start gap-2">
-                        <span className="text-cyan-400 font-mono text-xs mt-0.5 font-bold">Q:</span>
-                        <span>{faq.q}</span>
-                      </h3>
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-4 border-l border-cyan-500/30 ml-1.5 mt-2">
-                        {faq.a}
-                      </p>
-                    </article>
-                  ))}
-                </div>
-              </section>
-            ))}
+                  <div className="space-y-3.5">
+                    {categoryGroup.items.map((faq, idx) => (
+                      <article
+                        key={idx}
+                        className="rounded-xl sm:rounded-2xl border border-slate-800/80 bg-slate-900/50 p-5 sm:p-6 space-y-2 hover:border-slate-700/80 transition-colors ring-1 ring-white/[0.02]"
+                      >
+                        <h3 className="text-sm sm:text-base font-bold text-white flex items-start gap-2">
+                          <span className="text-cyan-400 font-mono text-xs mt-0.5 font-bold">Q:</span>
+                          <span>{faq.q}</span>
+                        </h3>
+                        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pl-4 border-l border-cyan-500/30 ml-1.5 mt-2">
+                          {faq.a}
+                        </p>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
           </div>
 
           {/* Quick Capability Links */}
-          <section className="my-14 rounded-2xl border border-slate-800/90 bg-slate-900/70 p-6 sm:p-8 ring-1 ring-white/[0.04]">
+          <section id="capabilities" className="my-14 rounded-2xl border border-slate-800/90 bg-slate-900/70 p-6 sm:p-8 ring-1 ring-white/[0.04]">
             <h2 className="text-lg sm:text-xl font-bold text-white mb-5">Explore Detailed Capabilities</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3.5 sm:gap-4">
               <Link
                 href="/dynamic-qr"
                 className="rounded-xl border border-slate-800/80 bg-slate-950/60 p-4 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all group"
@@ -191,7 +194,16 @@ export default function FaqPage() {
                 <span className="text-xs font-bold text-white group-hover:text-cyan-300 block mb-1">
                   Image Galleries →
                 </span>
-                <span className="text-[11px] text-slate-400">High-res multi-photo portals</span>
+                <span className="text-[11px] text-slate-400">High-res photo portals</span>
+              </Link>
+              <Link
+                href="/multi-file-qr"
+                className="rounded-xl border border-slate-800/80 bg-slate-950/60 p-4 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all group"
+              >
+                <span className="text-xs font-bold text-white group-hover:text-cyan-300 block mb-1">
+                  Multi-File Bundles →
+                </span>
+                <span className="text-[11px] text-slate-400">ZIP & mixed asset hubs</span>
               </Link>
               <Link
                 href="/security"
@@ -201,6 +213,54 @@ export default function FaqPage() {
                   Security & Privacy →
                 </span>
                 <span className="text-[11px] text-slate-400">Argon2id & zero raw IP</span>
+              </Link>
+            </div>
+          </section>
+
+          {/* Engineering & Technical Guides */}
+          <section id="guides" className="my-14 rounded-2xl border border-slate-800/90 bg-slate-900/70 p-6 sm:p-8 ring-1 ring-white/[0.04]">
+            <div className="flex items-center justify-between mb-5">
+              <h2 className="text-lg sm:text-xl font-bold text-white">Engineering & Technical Guides</h2>
+              <Link href="/learn" className="text-xs font-mono text-cyan-400 hover:underline">
+                View Knowledge Hub →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-4">
+              <Link
+                href="/learn/dynamic-vs-static-qr-codes"
+                className="rounded-xl border border-slate-800/80 bg-slate-950/60 p-4 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all group"
+              >
+                <span className="text-xs font-bold text-white group-hover:text-cyan-300 block mb-1">
+                  Dynamic vs Static →
+                </span>
+                <span className="text-[11px] text-slate-400">Deep architectural comparison</span>
+              </Link>
+              <Link
+                href="/learn/qr-code-print-size-guide"
+                className="rounded-xl border border-slate-800/80 bg-slate-950/60 p-4 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all group"
+              >
+                <span className="text-xs font-bold text-white group-hover:text-cyan-300 block mb-1">
+                  Print Sizing Guide →
+                </span>
+                <span className="text-[11px] text-slate-400">Scan distance calculation</span>
+              </Link>
+              <Link
+                href="/learn/qr-code-error-correction"
+                className="rounded-xl border border-slate-800/80 bg-slate-950/60 p-4 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all group"
+              >
+                <span className="text-xs font-bold text-white group-hover:text-cyan-300 block mb-1">
+                  Error Correction →
+                </span>
+                <span className="text-[11px] text-slate-400">Reed-Solomon recovery levels</span>
+              </Link>
+              <Link
+                href="/learn/multiple-files-qr-code"
+                className="rounded-xl border border-slate-800/80 bg-slate-950/60 p-4 hover:border-cyan-500/40 hover:bg-slate-900/80 transition-all group"
+              >
+                <span className="text-xs font-bold text-white group-hover:text-cyan-300 block mb-1">
+                  Multi-File Linking →
+                </span>
+                <span className="text-[11px] text-slate-400">Consolidated bundle methods</span>
               </Link>
             </div>
           </section>
